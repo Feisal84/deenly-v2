@@ -1,81 +1,199 @@
-# Deenly - Die Moschee Khutba App
+# 🕌 Deenly v2 - Islamic Mosque Community Platform
 
-Deenly ist eine Web-Anwendung, die aktuelle Informationen zu Khutbas (Freitagspredigten) und anderen Aktivitäten in Moscheen bereitstellt. Die App ermöglicht es Benutzern, Moscheen in ihrer Nähe zu entdecken und auf dem Laufenden zu bleiben.
+A modern Next.js application for Islamic mosques and communities, featuring multilingual support, lecture management, event scheduling, and prayer times.
 
-## Features
+## ✨ Features
 
-- Übersicht über Moscheen
-- Detailseiten für jede einzelne Moschee
-- Anzeige von Khutbas/Freitagspredigten
-- Anzeige von Veranstaltungen
-- Benutzerauthentifizierung via Supabase
-- Responsives Design für mobile und Desktop-Nutzung
+- **🌍 Multilingual Support**: German, Arabic, English, and Turkish
+- **📚 Lecture Management**: Khutbas and Islamic lectures with translations
+- **🕌 Mosque Profiles**: Comprehensive mosque information and services
+- **📅 Event Management**: Community events and programs
+- **🕐 Prayer Times**: Daily prayer schedules for each mosque
+- **📱 Responsive Design**: Modern UI with Tailwind CSS
+- **🔒 Secure**: Row-level security with Supabase
+- **⚡ Performance**: Optimized with Next.js 14
+- **🎯 Offline Support**: Fallback data when database is unavailable
 
-## Technologie-Stack
+## 🚀 Tech Stack
 
-- **Frontend:** Next.js 14+ mit App Router, React, TypeScript
-- **Styling:** Tailwind CSS
-- **Backend:** Supabase (PostgreSQL-Datenbank, Auth, Storage)
-- **Hosting:** Vercel (optional)
+- **Framework**: Next.js 14 with App Router
+- **Database**: Supabase (PostgreSQL)
+- **Styling**: Tailwind CSS
+- **UI Components**: Custom components with shadcn/ui
+- **Internationalization**: next-intl
+- **Authentication**: Supabase Auth (ready for future implementation)
+- **Language**: TypeScript
+- **Error Handling**: Graceful degradation with fallback data
 
-## Datenbankmodell
+## 📦 Quick Start
 
-Die App verwendet die folgenden Tabellen:
+### Prerequisites
 
-- **moscheen** - Grundlegende Informationen zu Moscheen
-- **khutbas** - Freitagspredigten mit Datum, Titel, Beschreibung usw.
-- **veranstaltungen** - Veranstaltungen und Aktivitäten in den Moscheen
-- **gebetszeiten** - Gebetszeiten für jede Moschee
-- **oeffnungszeiten** - Öffnungszeiten der Moscheen
+- Node.js 18+ 
+- npm or yarn
+- Supabase account
 
-Das vollständige Datenbankschema findest du in `supabase/migrations/20241216_init_schema.sql`.
+### 1. Clone the Repository
 
-## Projektstruktur
-
-```en
-/app                # Next.js App Router
-  /page.tsx         # Startseite
-  /layout.tsx       # Layout-Komponente mit Navigation
-  /mosques         # Moscheen-Übersichtsseite
-    /page.tsx
-  /mosques/[handle]    # Moschee-Detailseite
-    /page.tsx
-  /(auth-pages)     # Authentifizierungsseiten
-
-/components         # Wiederverwendbare Komponenten
-  /deenly-hero.tsx  # Hero-Komponente für die Startseite
-  ...
-
-/lib                # Hilfsfunktionen und Typdefinitionen
-  /types.ts         # TypeScript-Typdefinitionen
-
-/utils/supabase     # Supabase-Hilfsfunktionen
-  /server.ts        # Server-Client für Supabase
-  ...
-
-/supabase           # Supabase-Migrations
-  /migrations
-    /20241216_init_schema.sql  # Datenbankschema
+```bash
+git clone https://github.com/your-username/deenly-v2.git
+cd deenly-v2
 ```
 
-## Deployment
+### 2. Install Dependencies
 
-Die App kann einfach auf Vercel deployt werden:
+```bash
+npm install
+# or
+yarn install
+```
 
-1. Pushe dein Repository zu GitHub
-2. Verbinde es mit deinem Vercel-Account
-3. Setze die Umgebungsvariablen in Vercel
-4. Deploye die App
+### 3. Set Up Supabase
 
-## Mitwirken
+1. Create a new project at [supabase.com](https://supabase.com)
+2. Run the database schema from `database-schema.sql` in your Supabase SQL Editor
+3. Get your project URL and anon key from Settings > API
 
-Beiträge sind willkommen! Bitte erstelle einen Issue oder Pull Request, wenn du Verbesserungen oder neue Features vorschlagen möchtest.
+### 4. Environment Variables
 
-## Lizenz
+Create a `.env.local` file in the root directory:
 
-[MIT](LICENSE)
+```bash
+# Supabase Configuration
+NEXT_PUBLIC_SUPABASE_URL=https://your-project-id.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key-here
+```
 
-- [Next.js Subscription Payments Starter](https://github.com/vercel/nextjs-subscription-payments)
-- [Cookie-based Auth and the Next.js 13 App Router (free course)](https://youtube.com/playlist?list=PL5S4mPUpp4OtMhpnp93EFSo42iQ40XjbF)
-- [Supabase Auth and the Next.js App Router](https://github.com/supabase/supabase/tree/master/examples/auth/nextjs)
-"# deenly-v2" 
+### 5. Run the Development Server
+
+```bash
+npm run dev
+# or
+yarn dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## 🗃️ Database Schema
+
+The application uses the following main tables:
+
+- **mosques**: Mosque information and settings
+- **lectures**: Khutbas and religious content
+- **events**: Community events and programs  
+- **prayer_times**: Daily prayer schedules
+
+See `database-schema.sql` for the complete schema with sample data.
+
+## 🌐 Supported Languages
+
+- **German (de)**: Primary language
+- **Arabic (ar)**: Islamic content
+- **English (en)**: International support
+- **Turkish (tr)**: Community support
+
+## 📁 Project Structure
+
+```
+deenly-v2/
+├── app/                    # Next.js App Router
+│   ├── [locale]/          # Internationalized routes
+│   ├── api/               # API routes
+│   └── globals.css        # Global styles
+├── components/            # React components
+│   ├── ui/               # Reusable UI components
+│   └── ...               # Feature components
+├── lib/                  # Utility libraries
+├── messages/             # Translation files
+│   ├── de/
+│   ├── ar/
+│   ├── en/
+│   └── tr/
+├── utils/                # Utility functions
+│   ├── supabase/        # Supabase client setup
+│   └── fallback-data.ts # Offline fallback data
+└── public/              # Static assets
+```
+
+## 🔧 Key Features
+
+### Error Handling & Resilience
+- Automatic fallback to demo data when database is unavailable
+- Connection testing and retry mechanisms
+- User-friendly error messages in German
+- Graceful degradation for offline scenarios
+
+### Internationalization
+- Multi-language support with next-intl
+- RTL support for Arabic content
+- Localized prayer times and dates
+- Cultural considerations for Islamic content
+
+### Performance
+- Optimized database queries with proper indexing
+- Image optimization with Next.js
+- Responsive design for all devices
+- Server-side rendering for SEO
+
+## 🚀 Deployment
+
+### Vercel (Recommended)
+
+1. Push your code to GitHub
+2. Connect your repository to [Vercel](https://vercel.com)
+3. Add your environment variables in Vercel dashboard:
+   - `NEXT_PUBLIC_SUPABASE_URL`
+   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+4. Deploy automatically
+
+### Other Platforms
+
+The app can be deployed to any platform that supports Next.js:
+- Netlify
+- Railway
+- AWS Amplify
+- Self-hosted
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📝 Documentation
+
+- [Supabase Setup Guide](./SUPABASE_SETUP_GUIDE.md)
+- [Supabase Error Fix Documentation](./SUPABASE_ERROR_FIX.md)
+- [Database Schema](./database-schema.sql)
+
+## 🔒 Security
+
+- Row Level Security (RLS) enabled on all tables
+- Environment variables for sensitive data
+- Supabase handles authentication and authorization
+- CORS properly configured
+
+## 📞 Support
+
+If you encounter any issues:
+
+1. Check the [troubleshooting guide](./SUPABASE_ERROR_FIX.md)
+2. Review the database connection test script
+3. Open an issue on GitHub
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+## 🙏 Acknowledgments
+
+- Islamic community for inspiration and guidance
+- Supabase for excellent backend services
+- Next.js team for the amazing framework
+- Contributors and testers
+
+---
+
+**Made with ❤️ for the Islamic community** 

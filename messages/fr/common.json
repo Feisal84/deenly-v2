@@ -1,0 +1,183 @@
+{
+  "navigation": {
+    "home": "Accueil",
+    "mosques": "Mosquées",
+    "search-placeholder": "Rechercher des mosquées par nom, rue ou ville",
+    "name": "Nom",
+    "address": "Adresse",
+    "route": "Itinéraire",
+    "found": "trouvé",
+    "loading-mosques": "Chargement des mosquées...",
+    "no-mosques-found": "Aucune mosquée n'a été trouvée",
+    "download-app": "Télécharger l'application",
+    "languages": {
+      "de": "Allemand",
+      "en": "Anglais",
+      "es": "Espagnol",
+      "fr": "Français",
+      "tr": "Turc",
+      "ru": "Russe",
+      "ar": "Arabe"
+    }
+  },
+  "footer": {
+    "madeBy": "Fait par"
+  },
+  "theme": {
+    "light": "Clair",
+    "dark": "Sombre"
+  },
+  "app": {
+    "title": "Connectez-vous avec votre communauté de mosquée",
+    "description": "Obtenez des informations à jour et des traductions Khutba EN DIRECT de votre mosquée",
+    "badge": "L'application pour la communauté musulmane",
+    "ctaButton": "Explorer les mosquées",
+    "downloadButton": "Télécharger l'application",
+    "forMosquesButton": "Pour les mosquées",
+    "forUsersButton": "Pour les visiteurs",
+    "features": {
+      "title": "Ce que Deenly offre",
+      "khutba": {
+        "title": "Sermons du vendredi",
+        "description": "Ne manquez plus jamais un sermon du vendredi et partagez-le avec d'autres"
+      },
+      "mosque": {
+        "title": "Fonctionnalités pour les mosquées",
+        "description": "ImamGPT pour les khutbas et présence web automatique pour votre mosquée"
+      },
+      "prayer": {
+        "title": "Heures de prière",
+        "description": "Heures de prière précises pour votre mosquée locale en un coup d'œil"
+      }
+    },
+    "stats": {
+      "title": "Deenly en chiffres",
+      "mosques": "Mosquées",
+      "khutbas": "Khutbas",
+      "views": "Vues totales"
+    },
+    "forMosques": {
+      "title": "Pour les mosquées",
+      "description": "Atteignez votre communauté mieux et plus facilement",
+      "benefits": {
+        "item1": "Présence numérique pour votre mosquée",
+        "item2": "Partage facile des sermons du vendredi",
+        "item3": "Calcul automatique des heures de prière",
+        "item4": "Communication des événements"
+      }
+    },
+    "forUsers": {
+      "title": "Pour les visiteurs",
+      "description": "Découvrez et suivez les activités des mosquées",
+      "benefits": {
+        "item1": "Trouvez des mosquées près de chez vous",
+        "item2": "Heures de prière toujours à portée de main",
+        "item3": "Écoutez et lisez les sermons du vendredi",
+        "item4": "Restez informé des événements à venir"
+      }
+    },
+    "cta": {
+      "title": "Faites partie de la communauté Deenly",
+      "description": "Découvrez les mosquées et connectez-vous avec la communauté musulmane",
+      "forMosques": {
+        "title": "Pour les mosquées",
+        "description": "Vous représentez une mosquée et souhaitez utiliser Deenly 100% gratuitement ? Contactez-nous pour en savoir plus.",
+        "contactButton": "Contactez-nous"
+      }
+    }
+  },
+  "mosque": {
+    "noImage": "Aucune image disponible",
+    "phone": "Téléphone",
+    "email": "Email",
+    "website": "Site web",
+    "fridayPrayer": "Prière du vendredi",
+    "hour": "heure",
+    "noDescription": "Aucune description disponible",
+    "announcement": "Annonce",
+    "latestKhutbas": "Dernières Khutbas",
+    "mosqueNavLink": "Découvrir les mosquées",
+    "prayerTimes": "Heures de prière",
+    "noPrayerTimes": "Les heures de prière automatiques ne peuvent pas être calculées pour cette mosquée car aucune coordonnée n'est disponible.",
+    "calculationMethod": "Méthode de calcul",
+    "standard": "Standard",
+    "noKhutbas": "Aucune khutba disponible",
+    "mosque": "Mosquée"
+  },
+  "prayerTimes": {
+    "todayTimes": "Heures de prière d'aujourd'hui",
+    "noCalculation": "Les heures de prière ne peuvent pas être calculées pour cette mosquée.",
+    "asOf": "Date"
+  },
+  "errors": {
+    "loadingMosqueError": "Erreur lors du chargement de la mosquée",
+    "loadingDataError": "Erreur lors du chargement des données",
+    "khutbaTableError": "La table des khutbas n'existe peut-être pas",
+    "loadingMoreKhutbas": "Erreur lors du chargement de plus de khutbas"
+  },
+  "actions": {
+    "loadMore": "Charger plus",
+    "loading": "Chargement...",
+    "readMore": "Lire plus"
+  },
+  "lecture": {
+    "mosque": "Mosquée",
+    "date": "Date",
+    "views": "Vues",
+    "translation": "Traduction",
+    "original": "Original",
+    "fontSize": "Taille de police",
+    "decreaseFontSize": "Diminuer la taille de police",
+    "increaseFontSize": "Augmenter la taille de police",
+    "resetFontSize": "Taille par défaut",
+    "decreaseFontSizeSymbol": "A-",
+    "increaseFontSizeSymbol": "A+"
+  },
+  "hero": {
+    "badges": {
+      "fridaySermons": "Sermons du vendredi",
+      "mosqueSearch": "Recherche de mosquées",
+      "prayerTimes": "Heures de prière",
+      "imamGPT": "ImamGPT"
+    },
+    "altText": "Présentation de l'application Deenly"
+  },
+  "featuresSection": {
+    "tabs": {
+      "ummah": "Fonctionnalités pour les visiteurs",
+      "mosque": "Fonctionnalités pour les mosquées"
+    },
+    "ummah": {
+      "khutba": {
+        "title": "Khutba à la demande",
+        "description": "Khutba à la demande et traduite en 7 langues"
+      },
+      "prayerTimes": {
+        "title": "Heures de prière actuelles",
+        "description": "Heures de prière à jour pour votre mosquée"
+      },
+      "mosqueInfo": {
+        "title": "Informations sur la mosquée",
+        "description": "Informations actuelles sur votre mosquée"
+      }
+    },
+    "mosque": {
+      "translation": {
+        "title": "Traduction automatique",
+        "description": "Traduction automatique de khutba en 7 langues"
+      },
+      "webPresence": {
+        "title": "Présence web simple",
+        "description": "Présence web automatique facilement gérée via l'application (aucune connaissance technique nécessaire)"
+      },
+      "management": {
+        "title": "Outils de gestion",
+        "description": "Gestion des heures de prière et autres outils utiles"
+      }
+    },
+    "altText": {
+      "ummah": "Illustration pour les fonctionnalités des visiteurs",
+      "mosque": "Illustration pour les fonctionnalités des mosquées"
+    }
+  }
+}

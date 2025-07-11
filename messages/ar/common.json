@@ -1,0 +1,183 @@
+{
+  "navigation": {
+    "home": "الرئيسية",
+    "mosques": "المساجد",
+    "search-placeholder": "البحث عن المساجد حسب الاسم أو الشارع أو المدينة",
+    "name": "الاسم",
+    "address": "العنوان",
+    "route": "المسار",
+    "found": "وجدت",
+    "loading-mosques": "جاري تحميل المساجد...",
+    "no-mosques-found": "لم يتم العثور على أي مساجد",
+    "download-app": "تحميل التطبيق",
+    "languages": {
+      "de": "الألمانية",
+      "en": "الإنجليزية",
+      "es": "الإسبانية",
+      "fr": "الفرنسية",
+      "tr": "التركية",
+      "ru": "الروسية",
+      "ar": "العربية"
+    }
+  },
+  "footer": {
+    "madeBy": "صنع بواسطة"
+  },
+  "theme": {
+    "light": "فاتح",
+    "dark": "داكن"
+  },
+  "app": {
+    "title": "تواصل مع مجتمع مسجدك",
+    "description": "احصل على معلومات محدثة وترجمات خطبة مباشرة من مسجدك",
+    "badge": "تطبيق للمجتمع المسلم",
+    "ctaButton": "استكشاف المساجد",
+    "downloadButton": "تحميل التطبيق",
+    "forMosquesButton": "للمساجد",
+    "forUsersButton": "للزوار",
+    "features": {
+      "title": "ما يقدمه Deenly",
+      "khutba": {
+        "title": "خطب الجمعة",
+        "description": "لن تفوتك خطبة الجمعة مرة أخرى ويمكنك مشاركتها مع الآخرين"
+      },
+      "mosque": {
+        "title": "ميزات للمساجد",
+        "description": "ImamGPT للخطب ووجود تلقائي على الويب لمسجدك"
+      },
+      "prayer": {
+        "title": "أوقات الصلاة",
+        "description": "أوقات صلاة دقيقة لمسجدك المحلي بلمحة واحدة"
+      }
+    },
+    "stats": {
+      "title": "Deenly بالأرقام",
+      "mosques": "المساجد",
+      "khutbas": "الخطب",
+      "views": "إجمالي المشاهدات"
+    },
+    "forMosques": {
+      "title": "للمساجد",
+      "description": "الوصول إلى مجتمعك بشكل أفضل وأسهل",
+      "benefits": {
+        "item1": "وجود رقمي لمسجدك",
+        "item2": "مشاركة سهلة لخطب الجمعة",
+        "item3": "حساب تلقائي لأوقات الصلاة",
+        "item4": "التواصل حول الفعاليات"
+      }
+    },
+    "forUsers": {
+      "title": "للزوار",
+      "description": "اكتشف وتابع أنشطة المسجد",
+      "benefits": {
+        "item1": "ابحث عن المساجد القريبة منك",
+        "item2": "أوقات الصلاة دائمًا في متناول يدك",
+        "item3": "استمع إلى خطب الجمعة واقرأها",
+        "item4": "ابق على اطلاع بالفعاليات القادمة"
+      }
+    },
+    "cta": {
+      "title": "كن جزءًا من مجتمع Deenly",
+      "description": "اكتشف المساجد وتواصل مع المجتمع المسلم",
+      "forMosques": {
+        "title": "للمساجد",
+        "description": "هل تمثل مسجدًا وترغب في استخدام Deenly مجانًا 100٪؟ اتصل بنا لمعرفة المزيد.",
+        "contactButton": "اتصل بنا"
+      }
+    }
+  },
+  "mosque": {
+    "noImage": "لا توجد صورة متاحة",
+    "phone": "الهاتف",
+    "email": "البريد الإلكتروني",
+    "website": "الموقع الإلكتروني",
+    "fridayPrayer": "صلاة الجمعة",
+    "hour": "الساعة",
+    "noDescription": "لا يوجد وصف متاح",
+    "announcement": "إعلان",
+    "latestKhutbas": "أحدث الخطب",
+    "mosqueNavLink": "اكتشاف المساجد",
+    "prayerTimes": "أوقات الصلاة",
+    "noPrayerTimes": "لا يمكن حساب أوقات الصلاة التلقائية لهذا المسجد حيث لا تتوفر إحداثيات.",
+    "calculationMethod": "طريقة الحساب",
+    "standard": "قياسي",
+    "noKhutbas": "لا توجد خطب متاحة",
+    "mosque": "مسجد"
+  },
+  "prayerTimes": {
+    "todayTimes": "أوقات الصلاة اليوم",
+    "noCalculation": "لا يمكن حساب أوقات الصلاة لهذا المسجد.",
+    "asOf": "التاريخ"
+  },
+  "errors": {
+    "loadingMosqueError": "خطأ في تحميل المسجد",
+    "loadingDataError": "خطأ في تحميل البيانات",
+    "khutbaTableError": "قد لا يوجد جدول للخطب",
+    "loadingMoreKhutbas": "خطأ في تحميل المزيد من الخطب"
+  },
+  "actions": {
+    "loadMore": "تحميل المزيد",
+    "loading": "جاري التحميل...",
+    "readMore": "قراءة المزيد"
+  },
+  "lecture": {
+    "mosque": "مسجد",
+    "date": "التاريخ",
+    "views": "المشاهدات",
+    "translation": "الترجمة",
+    "original": "الأصلي",
+    "fontSize": "حجم الخط",
+    "decreaseFontSize": "تصغير حجم الخط",
+    "increaseFontSize": "تكبير حجم الخط",
+    "resetFontSize": "إعادة ضبط الحجم",
+    "decreaseFontSizeSymbol": "أ-",
+    "increaseFontSizeSymbol": "أ+"
+  },
+  "hero": {
+    "badges": {
+      "fridaySermons": "خطب الجمعة",
+      "mosqueSearch": "البحث عن المساجد",
+      "prayerTimes": "أوقات الصلاة",
+      "imamGPT": "ImamGPT"
+    },
+    "altText": "عرض تطبيق Deenly"
+  },
+  "featuresSection": {
+    "tabs": {
+      "ummah": "ميزات للزوار",
+      "mosque": "ميزات للمساجد"
+    },
+    "ummah": {
+      "khutba": {
+        "title": "الخطبة عند الطلب",
+        "description": "الخطبة عند الطلب ومترجمة إلى 7 لغات"
+      },
+      "prayerTimes": {
+        "title": "أوقات الصلاة الحالية",
+        "description": "أوقات صلاة محدثة لمسجدك"
+      },
+      "mosqueInfo": {
+        "title": "معلومات المسجد",
+        "description": "معلومات حالية عن مسجدك"
+      }
+    },
+    "mosque": {
+      "translation": {
+        "title": "ترجمة تلقائية",
+        "description": "ترجمة تلقائية للخطب إلى 7 لغات"
+      },
+      "webPresence": {
+        "title": "وجود سهل على الويب",
+        "description": "وجود تلقائي على الويب يمكن إدارته بسهولة من خلال التطبيق (لا تحتاج لمعرفة تقنية)"
+      },
+      "management": {
+        "title": "أدوات الإدارة",
+        "description": "إدارة أوقات الصلاة وأدوات مفيدة أخرى"
+      }
+    },
+    "altText": {
+      "ummah": "توضيح لميزات الزوار",
+      "mosque": "توضيح لميزات المساجد"
+    }
+  }
+}

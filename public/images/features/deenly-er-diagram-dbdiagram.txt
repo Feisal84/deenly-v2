@@ -1,0 +1,49 @@
+Table users {
+  id uuid [pk, unique, not null]
+  name varchar
+  email varchar [unique, not null]
+  password_hash varchar
+  role varchar
+}
+
+Table mosques {
+  id uuid [pk, unique, not null]
+  name varchar
+  address varchar
+  city varchar
+  country varchar
+}
+
+Table khutbas {
+  id uuid [pk, unique, not null]
+  mosque_id uuid [ref: > mosques.id]
+  imam_id uuid [ref: > users.id]
+  title varchar
+  content text
+  date date
+  language varchar
+}
+
+Table prayer_times {
+  id uuid [pk, unique, not null]
+  mosque_id uuid [ref: > mosques.id]
+  date date
+  fajr time
+  dhuhr time
+  asr time
+  maghrib time
+  isha time
+}
+
+Table announcements {
+  id uuid [pk, unique, not null]
+  mosque_id uuid [ref: > mosques.id]
+  title varchar
+  content text
+  date date
+}
+
+// Beziehungen:
+// - Eine Moschee hat viele Khutbas, Gebetszeiten und Ankündigungen.
+// - Ein User (Imam) kann viele Khutbas verfassen.
+// - Jede Khutba gehört zu genau einer Moschee und einem Imam.

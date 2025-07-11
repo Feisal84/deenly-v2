@@ -1,0 +1,183 @@
+{
+  "navigation": {
+    "home": "Inicio",
+    "mosques": "Mezquitas",
+    "search-placeholder": "Buscar mezquitas por nombre, calle o ciudad",
+    "name": "Nombre",
+    "address": "Dirección",
+    "route": "Ruta",
+    "found": "encontrado",
+    "loading-mosques": "Cargando mezquitas...",
+    "no-mosques-found": "No se encontraron mezquitas",
+    "download-app": "Descargar aplicación",
+    "languages": {
+      "de": "Alemán",
+      "en": "Inglés",
+      "es": "Español",
+      "fr": "Francés",
+      "tr": "Turco",
+      "ru": "Ruso",
+      "ar": "Árabe"
+    }
+  },
+  "footer": {
+    "madeBy": "Desarrollado por"
+  },
+  "theme": {
+    "light": "Claro",
+    "dark": "Oscuro"
+  },
+  "app": {
+    "title": "Conéctate con tu comunidad musulmana",
+    "description": "Obtenga información actualizada y traducciones en vivo de los sermones de su mezquita",
+    "badge": "La aplicación para la comunidad musulmana",
+    "ctaButton": "Explorar mezquitas",
+    "downloadButton": "Descargar aplicación",
+    "forMosquesButton": "Para mezquitas",
+    "forUsersButton": "Para visitantes",
+    "features": {
+      "title": "Lo que ofrece Deenly",
+      "khutba": {
+        "title": "Sermones de viernes",
+        "description": "Nunca más te pierdas un sermón de viernes y compártelo con otros"
+      },
+      "mosque": {
+        "title": "Características para mezquitas",
+        "description": "ImamGPT para jutbas y presencia web automática para tu mezquita"
+      },
+      "prayer": {
+        "title": "Horarios de oración",
+        "description": "Horarios precisos de oración para tu mezquita local de un vistazo"
+      }
+    },
+    "stats": {
+      "title": "Deenly en números",
+      "mosques": "Mezquitas",
+      "khutbas": "Jutbas",
+      "views": "Vistas totales"
+    },
+    "forMosques": {
+      "title": "Para mezquitas",
+      "description": "Llega a tu comunidad mejor y más fácilmente",
+      "benefits": {
+        "item1": "Presencia digital para tu mezquita",
+        "item2": "Compartir fácilmente sermones de viernes",
+        "item3": "Cálculo automático de horarios de oración",
+        "item4": "Comunicación de eventos"
+      }
+    },
+    "forUsers": {
+      "title": "Para visitantes",
+      "description": "Descubre y sigue actividades de mezquitas",
+      "benefits": {
+        "item1": "Encuentra mezquitas cerca de ti",
+        "item2": "Horarios de oración siempre a mano",
+        "item3": "Escucha y lee sermones de viernes",
+        "item4": "Mantente informado sobre próximos eventos"
+      }
+    },
+    "cta": {
+      "title": "Sé parte de la comunidad Deenly",
+      "description": "Descubre mezquitas y conéctate con la comunidad musulmana",
+      "forMosques": {
+        "title": "Para mezquitas",
+        "description": "¿Representas una mezquita y quieres usar Deenly 100% gratis? Contáctanos para obtener más información.",
+        "contactButton": "Contactar"
+      }
+    }
+  },
+  "mosque": {
+    "noImage": "No hay imagen disponible",
+    "phone": "Teléfono",
+    "email": "Correo electrónico",
+    "website": "Sitio web",
+    "fridayPrayer": "Oración del viernes",
+    "hour": "en punto",
+    "noDescription": "No hay descripción disponible",
+    "announcement": "Anuncio",
+    "latestKhutbas": "Últimas Jutbas",
+    "mosqueNavLink": "Descubrir mezquitas",
+    "prayerTimes": "Horarios de oración",
+    "noPrayerTimes": "No se pueden calcular automáticamente los horarios de oración para esta mezquita ya que no hay coordenadas disponibles.",
+    "calculationMethod": "Método de cálculo",
+    "standard": "Estándar",
+    "noKhutbas": "No hay jutbas disponibles",
+    "mosque": "Mezquita"
+  },
+  "prayerTimes": {
+    "todayTimes": "Horarios de oración de hoy",
+    "noCalculation": "No se pueden calcular los horarios de oración para esta mezquita.",
+    "asOf": "Fecha"
+  },
+  "errors": {
+    "loadingMosqueError": "Error al cargar la mezquita",
+    "loadingDataError": "Error al cargar los datos",
+    "khutbaTableError": "Es posible que la tabla de jutbas no exista",
+    "loadingMoreKhutbas": "Error al cargar más jutbas"
+  },
+  "actions": {
+    "loadMore": "Cargar más",
+    "loading": "Cargando...",
+    "readMore": "Leer más"
+  },
+  "lecture": {
+    "mosque": "Mezquita",
+    "date": "Fecha",
+    "views": "Vistas",
+    "translation": "Traducción",
+    "original": "Original",
+    "fontSize": "Tamaño de fuente",
+    "decreaseFontSize": "Disminuir tamaño de fuente",
+    "increaseFontSize": "Aumentar tamaño de fuente",
+    "resetFontSize": "Restablecer tamaño de fuente",
+    "decreaseFontSizeSymbol": "A-",
+    "increaseFontSizeSymbol": "A+"
+  },
+  "hero": {
+    "badges": {
+      "fridaySermons": "Sermones de viernes",
+      "mosqueSearch": "Búsqueda de mezquitas",
+      "prayerTimes": "Horarios de oración",
+      "imamGPT": "ImamGPT"
+    },
+    "altText": "Presentación de la aplicación Deenly"
+  },
+  "featuresSection": {
+    "tabs": {
+      "ummah": "Características para visitantes",
+      "mosque": "Características para mezquitas"
+    },
+    "ummah": {
+      "khutba": {
+        "title": "Jutba bajo demanda",
+        "description": "Jutba bajo demanda y traducida a 7 idiomas"
+      },
+      "prayerTimes": {
+        "title": "Horarios de oración actuales",
+        "description": "Horarios de oración actualizados de tu mezquita"
+      },
+      "mosqueInfo": {
+        "title": "Información de la mezquita",
+        "description": "Información actualizada sobre tu mezquita"
+      }
+    },
+    "mosque": {
+      "translation": {
+        "title": "Traducción automática",
+        "description": "Traducción automática de jutbas a 7 idiomas"
+      },
+      "webPresence": {
+        "title": "Presencia web sencilla",
+        "description": "Presencia web automática fácilmente gestionada a través de la aplicación (sin conocimientos técnicos necesarios)"
+      },
+      "management": {
+        "title": "Herramientas de gestión",
+        "description": "Gestión de horarios de oración y otras herramientas útiles"
+      }
+    },
+    "altText": {
+      "ummah": "Ilustración de características para visitantes",
+      "mosque": "Ilustración de características para mezquitas"
+    }
+  }
+}

@@ -1,0 +1,183 @@
+{
+  "navigation": {
+    "home": "Startseite",
+    "mosques": "Moscheen",
+    "search-placeholder": "Suche nach Moscheen nach Namen, Straße oder Stadt",
+    "name": "Name",
+    "address": "Adresse",
+    "route": "Route",
+    "found": "gefunden",
+    "loading-mosques": "Lade Moscheen...",
+    "no-mosques-found": "Keine Moscheen gefunden",
+    "download-app": "App herunterladen",
+    "languages": {
+      "de": "Deutsch",
+      "en": "Englisch",
+      "es": "Spanisch",
+      "fr": "Französisch",
+      "tr": "Türkisch",
+      "ru": "Russisch",
+      "ar": "Arabisch"
+    }
+  },
+  "footer": {
+    "madeBy": "Entwickelt von"
+  },
+  "theme": {
+    "light": "Hell",
+    "dark": "Dunkel"
+  },
+  "app": {
+    "title": "Verbinde dich mit deiner Moschee Gemeinde",
+    "description": "Erhalte aktuelle Informationen, Gebetszeiten und LIVE Khutba Übersetzungen aus deiner Moschee",
+    "badge": "Die App für die Muslimische Gemeinschaft",
+    "ctaButton": "Moscheen finden",
+    "downloadButton": "App herunterladen",
+    "forMosquesButton": "Für Moscheen",
+    "forUsersButton": "Für Besucher",
+    "features": {
+      "title": "Was bietet Deenly",
+      "khutba": {
+        "title": "Freitagspredigten",
+        "description": "Verpassen Sie keine Freitagspredigt mehr und teilen Sie sie mit anderen"
+      },
+      "mosque": {
+        "title": "Features für Moscheen",
+        "description": "ImamGPT für Khutbas und automatischer Webauftritt für Ihre Moschee"
+      },
+      "prayer": {
+        "title": "Gebetszeiten",
+        "description": "Genaue Gebetszeiten für Ihre lokale Moschee auf einen Blick"
+      }
+    },
+    "stats": {
+      "title": "Deenly in Zahlen",
+      "mosques": "Moscheen",
+      "khutbas": "Freitagspredigten",
+      "views": "Gesamt-Aufrufe"
+    },
+    "forMosques": {
+      "title": "Für Moscheen",
+      "description": "Erreichen Sie Ihre Gemeinschaft besser und einfacher",
+      "benefits": {
+        "item1": "Digitale Präsenz für Ihre Moschee",
+        "item2": "Einfaches Teilen von Freitagspredigten",
+        "item3": "Automatische Berechnung der Gebetszeiten",
+        "item4": "Kommunikation von Veranstaltungen"
+      }
+    },
+    "forUsers": {
+      "title": "Für Besucher",
+      "description": "Entdecken und verfolgen Sie Moscheeaktivitäten",
+      "benefits": {
+        "item1": "Finden Sie Moscheen in Ihrer Nähe",
+        "item2": "Gebetszeiten immer griffbereit",
+        "item3": "Freitagspredigten nachhören und nachlesen",
+        "item4": "Über kommende Veranstaltungen informiert bleiben"
+      }
+    },
+    "cta": {
+      "title": "Seien Sie Teil der Deenly-Gemeinschaft",
+      "description": "Entdecken Sie Moscheen und verbinden Sie sich mit der muslimischen Gemeinschaft",
+      "forMosques": {
+        "title": "Für Moscheen",
+        "description": "Sie representieren eine Moschee und möchten Deenly 100% konstenlos nutzen? Kontaktieren Sie uns, um mehr zu erfahren.",
+        "contactButton": "Kontakt aufnehmen"
+      }
+    }
+  },
+  "mosque": {
+    "noImage": "Kein Bild vorhanden",
+    "phone": "Telefon",
+    "email": "E-Mail",
+    "website": "Website",
+    "fridayPrayer": "Freitagsgebet",
+    "hour": "Uhr",
+    "noDescription": "Keine Beschreibung vorhanden",
+    "announcement": "Ankündigung",
+    "latestKhutbas": "Letzte Khutbas",
+    "mosqueNavLink": "Moscheen entdecken",
+    "prayerTimes": "Gebetszeiten",
+    "noPrayerTimes": "Für diese Moschee können keine automatischen Gebetszeiten berechnet werden, da keine Koordinaten verfügbar sind.",
+    "calculationMethod": "Berechnungsmethode",
+    "standard": "Standard",
+    "noKhutbas": "Keine Khutbas verfügbar",
+    "mosque": "Moschee"
+  },
+  "prayerTimes": {
+    "todayTimes": "Heutige Gebetszeiten",
+    "noCalculation": "Für diese Moschee können keine Gebetszeiten berechnet werden.",
+    "asOf": "Datum"
+  },
+  "errors": {
+    "loadingMosqueError": "Fehler beim Laden der Moschee",
+    "loadingDataError": "Fehler beim Laden der Daten",
+    "khutbaTableError": "Khutba-Tabelle existiert möglicherweise nicht",
+    "loadingMoreKhutbas": "Fehler beim Laden weiterer Khutbas"
+  },
+  "actions": {
+    "loadMore": "Mehr laden",
+    "loading": "Laden...",
+    "readMore": "Mehr lesen"
+  },
+  "lecture": {
+    "mosque": "Moschee",
+    "date": "Datum",
+    "views": "Aufrufe",
+    "translation": "Übersetzung",
+    "original": "Original",
+    "fontSize": "Schriftgröße",
+    "decreaseFontSize": "Schriftgröße verkleinern",
+    "increaseFontSize": "Schriftgröße vergrößern",
+    "resetFontSize": "Standardgröße",
+    "decreaseFontSizeSymbol": "A-",
+    "increaseFontSizeSymbol": "A+"
+  },
+  "hero": {
+    "badges": {
+      "fridaySermons": "Freitagspredigten",
+      "mosqueSearch": "Moscheesuche",
+      "prayerTimes": "Gebetszeiten",
+      "imamGPT": "ImamGPT"
+    },
+    "altText": "Deenly App Showcase"
+  },
+  "featuresSection": {
+    "tabs": {
+      "ummah": "Features für die Besucher",
+      "mosque": "Features für die Moschee"
+    },
+    "ummah": {
+      "khutba": {
+        "title": "Khutba auf Abruf",
+        "description": "Khutba auf Abruf und übersetzt in 7 Sprachen"
+      },
+      "prayerTimes": {
+        "title": "Aktuelle Gebetszeiten",
+        "description": "Aktuelle Gebetszeiten deiner Moschee"
+      },
+      "mosqueInfo": {
+        "title": "Moschee-Informationen",
+        "description": "Aktuelle Informationen zu deiner Moschee"
+      }
+    },
+    "mosque": {
+      "translation": {
+        "title": "Automatische Übersetzung",
+        "description": "Automatische Khutba Übersetzung in 7 Sprachen"
+      },
+      "webPresence": {
+        "title": "Einfacher Webauftritt",
+        "description": "Automatischer Webauftritt einfach per App verwalten (kein technisches Wissen nötig)"
+      },
+      "management": {
+        "title": "Verwaltungstools",
+        "description": "Gebetszeitenverwaltung & andere nützliche Tools"
+      }
+    },
+    "altText": {
+      "ummah": "Illustration für Besucher Features",
+      "mosque": "Illustration für Moschee Features"
+    }
+  }
+}

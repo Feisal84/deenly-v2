@@ -1,0 +1,183 @@
+{
+  "navigation": {
+    "home": "Ana Sayfa",
+    "mosques": "Camiler",
+    "search-placeholder": "İsim, sokak veya şehre göre cami ara",
+    "name": "İsim",
+    "address": "Adres",
+    "route": "Rota",
+    "found": "bulundu",
+    "loading-mosques": "Camiler yükleniyor...",
+    "no-mosques-found": "Hiçbir cami bulunamadı",
+    "download-app": "Uygulamayı İndir",
+    "languages": {
+      "de": "Almanca",
+      "en": "İngilizce",
+      "es": "İspanyolca",
+      "fr": "Fransızca",
+      "tr": "Türkçe",
+      "ru": "Rusça",
+      "ar": "Arapça"
+    }
+  },
+  "footer": {
+    "madeBy": "Yapan"
+  },
+  "theme": {
+    "light": "Açık",
+    "dark": "Koyu"
+  },
+  "app": {
+    "title": "Cami Topluluğunuzla Bağlantı Kurun",
+    "description": "Caminizden güncel bilgileri ve CANLI Hutbe çevirilerini alın",
+    "badge": "Müslüman Topluluk için Uygulama",
+    "ctaButton": "Camileri Keşfedin",
+    "downloadButton": "Uygulamayı İndir",
+    "forMosquesButton": "Camiler İçin",
+    "forUsersButton": "Ziyaretçiler İçin",
+    "features": {
+      "title": "Deenly Ne Sunar",
+      "khutba": {
+        "title": "Cuma Hutbeleri",
+        "description": "Bir daha asla Cuma hutbesini kaçırmayın ve başkalarıyla paylaşın"
+      },
+      "mosque": {
+        "title": "Camiler için Özellikler",
+        "description": "Hutbeler için ImamGPT ve caminiz için otomatik web varlığı"
+      },
+      "prayer": {
+        "title": "Namaz Vakitleri",
+        "description": "Yerel caminiz için doğru namaz vakitleri bir bakışta"
+      }
+    },
+    "stats": {
+      "title": "Rakamlarla Deenly",
+      "mosques": "Camiler",
+      "khutbas": "Hutbeler",
+      "views": "Toplam Görüntülenme"
+    },
+    "forMosques": {
+      "title": "Camiler İçin",
+      "description": "Topluluğunuza daha iyi ve daha kolay ulaşın",
+      "benefits": {
+        "item1": "Caminiz için dijital varlık",
+        "item2": "Cuma hutbelerinin kolay paylaşımı",
+        "item3": "Namaz vakitlerinin otomatik hesaplanması",
+        "item4": "Etkinliklerin iletişimi"
+      }
+    },
+    "forUsers": {
+      "title": "Ziyaretçiler İçin",
+      "description": "Cami faaliyetlerini keşfedin ve takip edin",
+      "benefits": {
+        "item1": "Yakınınızdaki camileri bulun",
+        "item2": "Namaz vakitleri her zaman elinizin altında",
+        "item3": "Cuma hutbelerini dinleyin ve okuyun",
+        "item4": "Yaklaşan etkinliklerden haberdar olun"
+      }
+    },
+    "cta": {
+      "title": "Deenly Topluluğunun Bir Parçası Olun",
+      "description": "Camileri keşfedin ve Müslüman topluluğuyla bağlantı kurun",
+      "forMosques": {
+        "title": "Camiler İçin",
+        "description": "Bir camiyi temsil ediyorsunuz ve Deenly'yi %100 ücretsiz kullanmak mı istiyorsunuz? Daha fazla bilgi için bize ulaşın.",
+        "contactButton": "Bize Ulaşın"
+      }
+    }
+  },
+  "mosque": {
+    "noImage": "Resim yok",
+    "phone": "Telefon",
+    "email": "E-posta",
+    "website": "Web sitesi",
+    "fridayPrayer": "Cuma Namazı",
+    "hour": "saat",
+    "noDescription": "Açıklama yok",
+    "announcement": "Duyuru",
+    "latestKhutbas": "Son Hutbeler",
+    "mosqueNavLink": "Camileri Keşfedin",
+    "prayerTimes": "Namaz Vakitleri",
+    "noPrayerTimes": "Bu cami için koordinat bulunmadığından otomatik namaz vakitleri hesaplanamıyor.",
+    "calculationMethod": "Hesaplama Yöntemi",
+    "standard": "Standart",
+    "noKhutbas": "Hutbe bulunmuyor",
+    "mosque": "Cami"
+  },
+  "prayerTimes": {
+    "todayTimes": "Bugünün Namaz Vakitleri",
+    "noCalculation": "Bu cami için namaz vakitleri hesaplanamıyor.",
+    "asOf": "Tarih"
+  },
+  "errors": {
+    "loadingMosqueError": "Cami yüklenirken hata oluştu",
+    "loadingDataError": "Veri yüklenirken hata oluştu",
+    "khutbaTableError": "Hutbe tablosu mevcut olmayabilir",
+    "loadingMoreKhutbas": "Daha fazla hutbe yüklenirken hata oluştu"
+  },
+  "actions": {
+    "loadMore": "Daha fazla yükle",
+    "loading": "Yükleniyor...",
+    "readMore": "Daha fazla oku"
+  },
+  "lecture": {
+    "mosque": "Cami",
+    "date": "Tarih",
+    "views": "Görüntülenme",
+    "translation": "Çeviri",
+    "original": "Orijinal",
+    "fontSize": "Yazı boyutu",
+    "decreaseFontSize": "Yazı boyutunu küçült",
+    "increaseFontSize": "Yazı boyutunu büyüt",
+    "resetFontSize": "Varsayılan boyut",
+    "decreaseFontSizeSymbol": "A-",
+    "increaseFontSizeSymbol": "A+"
+  },
+  "hero": {
+    "badges": {
+      "fridaySermons": "Cuma Hutbeleri",
+      "mosqueSearch": "Cami Arama",
+      "prayerTimes": "Namaz Vakitleri",
+      "imamGPT": "ImamGPT"
+    },
+    "altText": "Deenly Uygulama Tanıtımı"
+  },
+  "featuresSection": {
+    "tabs": {
+      "ummah": "Ziyaretçiler için Özellikler",
+      "mosque": "Camiler için Özellikler"
+    },
+    "ummah": {
+      "khutba": {
+        "title": "İsteğe Bağlı Hutbe",
+        "description": "İsteğe bağlı hutbe ve 7 dile çevrilmiş"
+      },
+      "prayerTimes": {
+        "title": "Güncel Namaz Vakitleri",
+        "description": "Caminiz için güncel namaz vakitleri"
+      },
+      "mosqueInfo": {
+        "title": "Cami Bilgileri",
+        "description": "Caminiz hakkında güncel bilgiler"
+      }
+    },
+    "mosque": {
+      "translation": {
+        "title": "Otomatik Çeviri",
+        "description": "7 dile otomatik hutbe çevirisi"
+      },
+      "webPresence": {
+        "title": "Basit Web Varlığı",
+        "description": "Uygulama üzerinden kolayca yönetilen otomatik web varlığı (teknik bilgi gerekmez)"
+      },
+      "management": {
+        "title": "Yönetim Araçları",
+        "description": "Namaz vakti yönetimi ve diğer faydalı araçlar"
+      }
+    },
+    "altText": {
+      "ummah": "Ziyaretçi Özellikleri İçin İllüstrasyon",
+      "mosque": "Cami Özellikleri İçin İllüstrasyon"
+    }
+  }
+}
