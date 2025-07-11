@@ -29,7 +29,7 @@ A modern Next.js application for Islamic mosques and communities, featuring mult
 
 ### Prerequisites
 
-- Node.js 18+ 
+- Node.js 18+
 - npm or yarn
 - Supabase account
 
@@ -80,7 +80,7 @@ The application uses the following main tables:
 
 - **mosques**: Mosque information and settings
 - **lectures**: Khutbas and religious content
-- **events**: Community events and programs  
+- **events**: Community events and programs
 - **prayer_times**: Daily prayer schedules
 
 See `database-schema.sql` for the complete schema with sample data.
@@ -118,18 +118,21 @@ deenly-v2/
 ## 🔧 Key Features
 
 ### Error Handling & Resilience
+
 - Automatic fallback to demo data when database is unavailable
 - Connection testing and retry mechanisms
 - User-friendly error messages in German
 - Graceful degradation for offline scenarios
 
 ### Internationalization
+
 - Multi-language support with next-intl
 - RTL support for Arabic content
 - Localized prayer times and dates
 - Cultural considerations for Islamic content
 
 ### Performance
+
 - Optimized database queries with proper indexing
 - Image optimization with Next.js
 - Responsive design for all devices
@@ -149,6 +152,7 @@ deenly-v2/
 ### Other Platforms
 
 The app can be deployed to any platform that supports Next.js:
+
 - Netlify
 - Railway
 - AWS Amplify
@@ -196,4 +200,4 @@ This project is licensed under the MIT License.
 
 ---
 
-**Made with ❤️ for the Islamic community** 
+**Made with ❤️ for the Islamic community**

@@ -5,10 +5,12 @@ This guide will help you import your Deenly v2 project to GitHub step by step.
 ## 🚀 Method 1: Using GitHub Desktop (Recommended for Beginners)
 
 ### Step 1: Install GitHub Desktop
+
 1. Download [GitHub Desktop](https://desktop.github.com/)
 2. Install and sign in with your GitHub account
 
 ### Step 2: Create Repository on GitHub
+
 1. Go to [github.com](https://github.com)
 2. Click "New repository" (green button)
 3. Fill in repository details:
@@ -19,6 +21,7 @@ This guide will help you import your Deenly v2 project to GitHub step by step.
 4. Click "Create repository"
 
 ### Step 3: Publish to GitHub Desktop
+
 1. Open GitHub Desktop
 2. Click "File" → "Add Local Repository"
 3. Browse to your project folder: `c:\DEENLY PROJECT COMPLETE\deenly-v2`
@@ -31,10 +34,12 @@ This guide will help you import your Deenly v2 project to GitHub step by step.
 ## 🔧 Method 2: Using Command Line (Git)
 
 ### Step 1: Install Git
+
 1. Download [Git for Windows](https://git-scm.com/download/win)
 2. Install with default settings
 
 ### Step 2: Initialize Repository
+
 Open Command Prompt in your project folder and run:
 
 ```bash
@@ -45,6 +50,7 @@ git commit -m "Initial commit: Deenly v2 - Islamic Mosque Community Platform"
 ```
 
 ### Step 3: Create GitHub Repository
+
 1. Go to [github.com](https://github.com)
 2. Click "New repository"
 3. Name it `deenly-v2`
@@ -52,6 +58,7 @@ git commit -m "Initial commit: Deenly v2 - Islamic Mosque Community Platform"
 5. Click "Create repository"
 
 ### Step 4: Connect and Push
+
 Replace `your-username` with your GitHub username:
 
 ```bash
@@ -73,6 +80,7 @@ Before uploading, make sure you have:
 ## 🔒 Security Check
 
 ### Environment Variables
+
 Make sure your `.env.local` file is NOT included in the upload:
 
 ```bash
@@ -81,6 +89,7 @@ Make sure your `.env.local` file is NOT included in the upload:
 ```
 
 ### Sample Environment File
+
 Create a `.env.example` file for others:
 
 ```bash
@@ -115,6 +124,7 @@ deenly-v2/
 ## 🎯 Next Steps After Upload
 
 ### 1. Update README
+
 Edit the clone URL in README.md to match your repository:
 
 ```bash
@@ -122,12 +132,14 @@ git clone https://github.com/your-username/deenly-v2.git
 ```
 
 ### 2. Set Repository Settings
+
 - Go to your repository on GitHub
 - Click "Settings"
 - Add a description and website URL
 - Choose topics: `nextjs`, `supabase`, `islamic`, `mosque`, `multilingual`
 
 ### 3. Create Releases
+
 - Go to "Releases" tab
 - Click "Create a new release"
 - Tag version: `v1.0.0`
@@ -135,7 +147,9 @@ git clone https://github.com/your-username/deenly-v2.git
 - Describe the features and setup instructions
 
 ### 4. Enable GitHub Pages (Optional)
+
 If you want to demo your app:
+
 - Go to Settings → Pages
 - Choose source: Deploy from a branch
 - Select `main` branch
@@ -144,12 +158,15 @@ If you want to demo your app:
 ## 🤝 Collaboration Setup
 
 ### Issues and Discussions
+
 - Enable Issues for bug reports and feature requests
 - Enable Discussions for community questions
 - Create issue templates for better organization
 
 ### Branch Protection
+
 For team collaboration:
+
 - Go to Settings → Branches
 - Add rule for `main` branch
 - Require pull request reviews
@@ -158,7 +175,9 @@ For team collaboration:
 ## 📈 Promotion Tips
 
 ### 1. Add Topics
+
 In your repository settings, add relevant topics:
+
 - `nextjs`
 - `typescript`
 - `supabase`
@@ -169,12 +188,14 @@ In your repository settings, add relevant topics:
 - `tailwindcss`
 
 ### 2. Create Good Documentation
+
 - Ensure README is comprehensive
 - Add screenshots or GIFs
 - Include live demo link if available
 - Document API endpoints
 
 ### 3. License
+
 Add a LICENSE file (MIT is recommended):
 
 ```
@@ -189,11 +210,13 @@ Permission is hereby granted, free of charge, to any person obtaining a copy...
 
 ### Common Issues
 
-1. **Large files error**: 
+1. **Large files error**:
+
    - Check if `node_modules` is included (should be in `.gitignore`)
    - Remove any large binary files
 
 2. **Permission denied**:
+
    - Make sure you're signed in to GitHub
    - Check repository permissions
 
@@ -204,6 +227,7 @@ Permission is hereby granted, free of charge, to any person obtaining a copy...
    ```
 
 ### Getting Help
+
 - Check GitHub's [documentation](https://docs.github.com)
 - Use GitHub Desktop for easier management
 - Ask in GitHub Community Discussions
@@ -211,6 +235,7 @@ Permission is hereby granted, free of charge, to any person obtaining a copy...
 ## ✅ Verification
 
 After upload, verify:
+
 - [ ] Repository is visible on GitHub
 - [ ] README displays correctly
 - [ ] All files are present
