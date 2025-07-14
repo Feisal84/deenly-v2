@@ -1,12 +1,12 @@
 "use client";
 
-import { useTranslations } from "next-intl";
-import { createClient } from "@/utils/supabase/client";
-import { useEffect, useState, useMemo } from "react";
-import Link from "next/link";
 import { Input } from "@/components/ui/input";
-import { ExternalLink } from "lucide-react";
 import { Mosque } from "@/lib/types";
+import { createClient } from "@/utils/supabase/client";
+import { ExternalLink } from "lucide-react";
+import { useTranslations } from "next-intl";
+import Link from "next/link";
+import { useEffect, useMemo, useState } from "react";
 
 export default function MoscheenPage() {
   const t = useTranslations('navigation');
@@ -34,7 +34,10 @@ export default function MoscheenPage() {
           .select('id, name, address, city, postal_code, handle, hero_path, created_at, services, prayer_time_calculation')
           .order('name');
 
-        if (error) throw error;
+        if (error) {
+          throw error;
+        }
+        
         setMosques(data || []);
       } catch (error) {
         console.error('Fehler beim Laden der Moscheen:', error);

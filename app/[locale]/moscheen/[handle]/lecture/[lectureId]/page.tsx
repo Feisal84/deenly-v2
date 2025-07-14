@@ -1,9 +1,8 @@
+import { incrementLectureViews } from "@/app/actions";
+import LectureContent from "@/components/lecture-content";
+import { Lecture } from "@/lib/types";
 import { createClient } from "@/utils/supabase/server";
 import { notFound } from "next/navigation";
-import Link from "next/link";
-import { Lecture, formatDate } from "@/lib/types";
-import LectureContent from "@/components/lecture-content";
-import { incrementLectureViews } from "@/app/actions";
 
 // Diese Seite zeigt einen einzelnen Vortrag (Lecture/Khutba) an
 export default async function LecturePage({
@@ -50,8 +49,13 @@ export default async function LecturePage({
       mosqueName = mosqueData.name;
     }
 
-    // Aktualisiere die Aufrufe (num_views) über die Edge Function
-    await incrementLectureViews(lectureId);
+    // Aktualisiere die Aufrufe (num_views) mit Fehlerbehandlung
+    try {
+      await incrementLectureViews(lectureId);
+    } catch (viewError) {
+      // Fehler beim Inkrementieren der Aufrufe sollten die Seite nicht blockieren
+      console.warn("Konnte Aufrufe nicht aktualisieren:", viewError);
+    }
 
   } catch (error) {
     console.error("Fehler beim Laden der Daten:", error);

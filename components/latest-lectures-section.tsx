@@ -2,10 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Lecture } from "@/lib/types";
-import { getFallbackLectures } from "@/utils/fallback-data";
 import { createClient } from "@/utils/supabase/client";
-import { getSupabaseConfig, testSupabaseConnection } from "@/utils/supabase/connection-test";
-import { AlertTriangle } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -21,8 +18,6 @@ export default function LatestLecturesSection() {
   const [lectures, setLectures] = useState<LectureWithMosque[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [isSupabaseAvailable, setIsSupabaseAvailable] = useState(true);
-  const [usingFallbackData, setUsingFallbackData] = useState(false);
   const t = useTranslations("mosque");
   const actionT = useTranslations("actions");
   const locale = useLocale();
@@ -30,94 +25,31 @@ export default function LatestLecturesSection() {
   useEffect(() => {
     async function fetchLatestLectures() {
       try {
-        // First test the connection
-        const config = getSupabaseConfig();
-        console.log("Supabase Config:", config);
-        
-        const connectionTest = await testSupabaseConnection();
-        console.log("Connection test result:", connectionTest);
-        
-        if (!connectionTest.isConnected) {
-          console.error("Supabase connection failed:", connectionTest);
-          setIsSupabaseAvailable(false);
-          
-          // Use fallback data instead of showing error
-          const fallbackData = getFallbackLectures();
-          setLectures(fallbackData);
-          setUsingFallbackData(true);
-          setIsLoading(false);
-          return;
-        }
-        
         const supabase = createClient();
-        console.log("Versuche Vorträge zu laden...");
         
         const { data, error } = await supabase
           .from("lectures")
-          .select("*")
+          .select(`
+            *,
+            mosques!inner(name, handle)
+          `)
           .eq("status", "Public")
           .order("created_at", { ascending: false })
           .limit(3);
 
         if (error) {
-          console.error("Supabase Fehler:", error.message, error.details, error.hint);
-          console.error("Full error object:", error);
-          setError(`Fehler beim Laden der Vorträge: ${error.message}`);
-          setIsLoading(false);
-          return;
-        }
-        
-        console.log("Vorträge erfolgreich geladen:", data?.length || 0);
-        
-        // Wenn wir die Vorträge haben, laden wir die zugehörigen Moscheen
-        if (data && data.length > 0) {
-          const lecturesWithMosque: LectureWithMosque[] = [...data];
-          
-          // Für jeden Vortrag die zugehörige Moschee laden
-          for (let i = 0; i < lecturesWithMosque.length; i++) {
-            const lecture = lecturesWithMosque[i];
-            try {
-              const { data: mosqueData, error: mosqueError } = await supabase
-                .from("mosques")
-                .select("name, handle")
-                .eq("id", lecture.mosque_id)
-                .single();
-                
-              if (mosqueError) {
-                console.error("Fehler beim Laden der Moschee:", mosqueError.message);
-              } else if (mosqueData) {
-                lecturesWithMosque[i] = {
-                  ...lecture,
-                  mosque: mosqueData
-                };
-              }
-            } catch (error) {
-              console.error("Fehler beim Laden der Moschee für Vortrag:", lecture.id, error);
-            }
-          }
-          
+          setError(error.message);
+        } else {
+          // Transform data to include mosque information
+          const lecturesWithMosque = data?.map(lecture => ({
+            ...lecture,
+            mosque: lecture.mosques
+          })) || [];
           setLectures(lecturesWithMosque);
-        } else {
-          setLectures([]);
         }
+        
       } catch (error) {
-        console.error("Netzwerk- oder Verbindungsfehler:", error);
-        setIsSupabaseAvailable(false);
-        
-        // Use fallback data instead of showing error
-        const fallbackData = getFallbackLectures();
-        setLectures(fallbackData);
-        setUsingFallbackData(true);
-        
-        if (error instanceof TypeError && error.message.includes("Failed to fetch")) {
-          console.warn("Using fallback data due to network connectivity issues");
-        } else if (error instanceof Error && error.message.includes("environment variables")) {
-          console.warn("Using fallback data due to missing Supabase configuration");
-        } else if (error instanceof Error) {
-          console.warn(`Using fallback data due to error: ${error.message}`);
-        } else {
-          console.warn("Using fallback data due to unknown connection error");
-        }
+        setError(error instanceof Error ? error.message : "An error occurred");
       } finally {
         setIsLoading(false);
       }
@@ -172,37 +104,12 @@ export default function LatestLecturesSection() {
           </div>
         ) : error ? (
           <div className="text-center py-8">
-            <div className="flex justify-center mb-4">
-              <AlertTriangle className="h-12 w-12 text-amber-500" />
-            </div>
-            <h3 className="text-lg font-semibold mb-2">
-              {!isSupabaseAvailable 
-                ? "Dienst vorübergehend nicht verfügbar" 
-                : "Fehler beim Laden"
-              }
-            </h3>
-            <p className="text-muted-foreground mb-2">
-              {error}
-            </p>
-            <p className="text-muted-foreground mb-4">
-              {!isSupabaseAvailable 
-                ? "Unsere Datenbank ist momentan nicht erreichbar. Bitte versuchen Sie es später erneut." 
-                : "Bitte versuchen Sie es später erneut oder kontaktieren Sie den Support."
-              }
-            </p>
-            <div className="space-y-2">
-              <button 
-                onClick={() => window.location.reload()} 
-                className="mr-2 px-4 py-2 text-sm font-medium text-primary bg-primary/10 rounded hover:bg-primary/20"
-              >
-                Seite neu laden
-              </button>
-              <Link href={`/${locale}/moscheen`}>
-                <Button>
-                  {t("mosqueNavLink", { defaultValue: "Moscheen entdecken" })}
-                </Button>
-              </Link>
-            </div>
+            <p className="text-red-500 mb-4">Fehler beim Laden: {error}</p>
+            <Link href={`/${locale}/moscheen`}>
+              <Button>
+                {t("mosqueNavLink", { defaultValue: "Moscheen entdecken" })}
+              </Button>
+            </Link>
           </div>
         ) : lectures.length === 0 ? (
           <div className="text-center py-8">
@@ -214,15 +121,7 @@ export default function LatestLecturesSection() {
             </Link>
           </div>
         ) : (
-          <div>
-            {usingFallbackData && (
-              <div className="mb-4 p-3 bg-amber-50 border border-amber-200 rounded-lg">
-                <p className="text-sm text-amber-800">
-                  <span className="font-medium">ⓘ Demo-Modus:</span> Da unsere Datenbank momentan nicht erreichbar ist, werden Beispieldaten angezeigt.
-                </p>
-              </div>
-            )}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {lectures.map((lecture) => (
               <div 
                 key={lecture.id} 
@@ -281,7 +180,6 @@ export default function LatestLecturesSection() {
                 </div>
               </div>
             ))}
-            </div>
           </div>
         )}
       </div>
