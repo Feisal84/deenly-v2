@@ -27,13 +27,18 @@ export default function FlexibleLoginPage() {
     setLoading(true);
     setError(null);
 
+    console.log('Starting authentication for email:', email);
+    console.log('Password provided:', !!password);
+
     // First, try to determine if user exists and what auth method to use
     // Try password authentication first (preferred for admin users)
     if (password) {
+      console.log('Attempting password authentication');
       return handlePasswordLogin();
     }
 
     // If no password provided, try OTP method
+    console.log('Attempting OTP authentication');
     try {
       const { error } = await supabase.auth.signInWithOtp({
         email,
@@ -42,15 +47,20 @@ export default function FlexibleLoginPage() {
         }
       });
 
+      console.log('OTP request result:', { error });
+
       if (error) {
+        console.error('OTP request error:', error);
         // If OTP fails, maybe user needs password
-        setError('Bitte geben Sie Ihr Passwort ein oder prüfen Sie Ihre E-Mail für den OTP-Code');
+        setError(`OTP-Fehler: ${error.message}. Bitte geben Sie Ihr Passwort ein oder prüfen Sie Ihre E-Mail.`);
         setStep('password');
       } else {
+        console.log('OTP sent successfully');
         setStep('otp');
         setError(null);
       }
     } catch (err) {
+      console.error('Unexpected error during OTP request:', err);
       setError('Ein unerwarteter Fehler ist aufgetreten');
     } finally {
       setLoading(false);
@@ -91,6 +101,9 @@ export default function FlexibleLoginPage() {
     setLoading(true);
     setError(null);
 
+    console.log('Starting OTP verification for email:', email);
+    console.log('OTP code length:', otpCode.length);
+
     try {
       const { data, error } = await supabase.auth.verifyOtp({
         email,
@@ -98,15 +111,23 @@ export default function FlexibleLoginPage() {
         type: 'email'
       });
 
+      console.log('OTP verification response:', { data, error });
+
       if (error) {
-        setError('Ungültiger OTP-Code. Bitte versuchen Sie es erneut.');
+        console.error('OTP verification error:', error);
+        setError(`Ungültiger OTP-Code: ${error.message}`);
         return;
       }
 
       if (data.user) {
+        console.log('OTP verification successful, user:', data.user.email);
         await checkUserRole(data.user.id);
+      } else {
+        console.error('No user data returned from OTP verification');
+        setError('Keine Benutzerdaten erhalten. Bitte versuchen Sie es erneut.');
       }
     } catch (err) {
+      console.error('Unexpected error during OTP verification:', err);
       setError('Ein unerwarteter Fehler ist aufgetreten');
     } finally {
       setLoading(false);
@@ -114,6 +135,8 @@ export default function FlexibleLoginPage() {
   };
 
   const checkUserRole = async (authUserId: string) => {
+    console.log('Checking user role for auth user ID:', authUserId);
+    
     try {
       const { data: userData, error: userError } = await supabase
         .from('users')
@@ -121,10 +144,25 @@ export default function FlexibleLoginPage() {
         .eq('auth_user_id', authUserId)
         .single();
 
-      if (userError || !userData) {
+      console.log('User role query result:', { userData, userError });
+
+      if (userError) {
+        console.error('Database error when checking user role:', userError);
+        if (userError.code === 'PGRST116') {
+          setError('Benutzer nicht in der Datenbank gefunden. Bitte kontaktieren Sie den Administrator.');
+        } else {
+          setError(`Datenbankfehler: ${userError.message}`);
+        }
+        return;
+      }
+
+      if (!userData) {
+        console.error('No user data found for auth user ID:', authUserId);
         setError('Benutzer nicht gefunden. Kontaktieren Sie den Administrator.');
         return;
       }
+
+      console.log('User found with role:', userData.role, 'mosque_id:', userData.mosque_id);
 
       if (userData.role === 'Imam' || userData.role === 'Admin') {
         // Show success message before redirect
@@ -153,7 +191,8 @@ export default function FlexibleLoginPage() {
           }
         }, 1000);
       } else {
-        setError('Sie haben keine Berechtigung für den Admin-Bereich');
+        console.error('User has insufficient role:', userData.role);
+        setError(`Sie haben keine Berechtigung für den Admin-Bereich. Ihre Rolle: ${userData.role}`);
       }
     } catch (err) {
       console.error('Role check error:', err);
