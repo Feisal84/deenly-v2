@@ -6,9 +6,10 @@ SELECT 'Available Mosques' as info, id, name, handle FROM mosques ORDER BY name;
 -- Then use this to create your user with a specific mosque UUID:
 -- Replace the mosque_id UUID below with the correct one from the query above
 
-INSERT INTO users (email, role, mosque_id, auth_user_id, created_at, updated_at)
+INSERT INTO users (email, full_name, role, mosque_id, auth_user_id, created_at, updated_at)
 VALUES (
     'kingfaisal840@gmail.com',
+    'King Faisal',                   -- Add your full name here
     'Imam',
     'your-mosque-uuid-here',  -- Replace with actual UUID from mosques table
     '3aae3e17-2c8c-48b1-a305-32bbafbf548a',
@@ -16,6 +17,7 @@ VALUES (
     NOW()
 )
 ON CONFLICT (email) DO UPDATE SET
+    full_name = EXCLUDED.full_name,
     role = EXCLUDED.role,
     mosque_id = EXCLUDED.mosque_id,
     auth_user_id = EXCLUDED.auth_user_id,

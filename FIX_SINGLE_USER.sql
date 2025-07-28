@@ -17,9 +17,10 @@ WHERE email = 'kingfaisal840@gmail.com';  -- Replace with your email
 -- Step 3: Create the user record in public.users
 -- IMPORTANT: Replace the mosque_id UUID below with the correct one from Step 1
 -- The mosque_id must be a valid UUID from the mosques table
-INSERT INTO users (email, role, mosque_id, auth_user_id, created_at, updated_at)
+INSERT INTO users (email, full_name, role, mosque_id, auth_user_id, created_at, updated_at)
 VALUES (
     'kingfaisal840@gmail.com',           -- Your email
+    'King Faisal',                       -- Your full name (required field)
     'Imam',                              -- Your role: 'Imam', 'Admin', or 'User'
     (SELECT id FROM mosques LIMIT 1),    -- This gets the first mosque UUID automatically
     '3aae3e17-2c8c-48b1-a305-32bbafbf548a',  -- Auth user ID from step 2
@@ -27,6 +28,7 @@ VALUES (
     NOW()
 )
 ON CONFLICT (email) DO UPDATE SET
+    full_name = EXCLUDED.full_name,
     role = EXCLUDED.role,
     mosque_id = EXCLUDED.mosque_id,
     auth_user_id = EXCLUDED.auth_user_id,
@@ -36,6 +38,7 @@ ON CONFLICT (email) DO UPDATE SET
 SELECT 
     'Step 4: Verification' as step,
     u.email,
+    u.full_name,
     u.role,
     u.mosque_id,
     u.auth_user_id,

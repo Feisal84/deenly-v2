@@ -14,9 +14,10 @@ ORDER BY id;
 -- We'll assign them all to the first available mosque initially and role = 'User'
 -- You can update specific users to 'Imam' or 'Admin' later
 
-INSERT INTO users (email, role, mosque_id, auth_user_id, created_at, updated_at)
+INSERT INTO users (email, full_name, role, mosque_id, auth_user_id, created_at, updated_at)
 SELECT 
     au.email,
+    COALESCE(au.raw_user_meta_data->>'full_name', SPLIT_PART(au.email, '@', 1)) as full_name,  -- Use metadata or email prefix
     'User' as role,  -- Default role, change to 'Imam' or 'Admin' as needed
     (SELECT id FROM mosques LIMIT 1) as mosque_id,  -- Assign to first mosque
     au.id as auth_user_id,
