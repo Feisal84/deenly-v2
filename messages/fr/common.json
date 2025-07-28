@@ -131,7 +131,8 @@
     "increaseFontSize": "Augmenter la taille de police",
     "resetFontSize": "Taille par défaut",
     "decreaseFontSizeSymbol": "A-",
-    "increaseFontSizeSymbol": "A+"
+    "increaseFontSizeSymbol": "A+",
+    "backToDashboard": "Retour au Tableau de Bord"
   },
   "hero": {
     "badges": {

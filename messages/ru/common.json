@@ -131,7 +131,8 @@
     "increaseFontSize": "Увеличить размер шрифта",
     "resetFontSize": "Сбросить размер",
     "decreaseFontSizeSymbol": "A-",
-    "increaseFontSizeSymbol": "A+"
+    "increaseFontSizeSymbol": "A+",
+    "backToDashboard": "Вернуться к Панели"
   },
   "hero": {
     "badges": {

@@ -131,7 +131,8 @@
     "increaseFontSize": "تكبير حجم الخط",
     "resetFontSize": "إعادة ضبط الحجم",
     "decreaseFontSizeSymbol": "أ-",
-    "increaseFontSizeSymbol": "أ+"
+    "increaseFontSizeSymbol": "أ+",
+    "backToDashboard": "العودة إلى لوحة التحكم"
   },
   "hero": {
     "badges": {
