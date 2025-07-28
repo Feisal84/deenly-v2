@@ -16,19 +16,19 @@ ORDER BY id;
 
 -- Example: Update key users with proper roles
 UPDATE users 
-SET role = 'Imam', mosque_id = 1 
+SET role = 'Imam', mosque_id = (SELECT id FROM mosques WHERE handle = 'bilal-moschee-bielefeld' LIMIT 1)
 WHERE email = 'kingfaisal840@gmail.com';
 
 UPDATE users 
-SET role = 'Admin', mosque_id = 1 
+SET role = 'Admin', mosque_id = (SELECT id FROM mosques LIMIT 1)
 WHERE email = 'ahmad@el-ali.de';
 
 UPDATE users 
-SET role = 'Imam', mosque_id = 1 
+SET role = 'Imam', mosque_id = (SELECT id FROM mosques LIMIT 1)
 WHERE email = 'info@tayabk.de';
 
 -- Add more users as needed:
--- UPDATE users SET role = 'Imam', mosque_id = 2 WHERE email = 'another-imam@example.com';
+-- UPDATE users SET role = 'Imam', mosque_id = (SELECT id FROM mosques WHERE name = 'Your Mosque Name' LIMIT 1) WHERE email = 'another-imam@example.com';
 
 -- Verify the updates
 SELECT 
