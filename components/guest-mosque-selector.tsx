@@ -1,10 +1,10 @@
 'use client';
 
+import FloatingAddButton from '@/components/floating-add-button';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Mosque } from '@/lib/types';
 import { createClient } from '@/utils/supabase/client';
-import { Plus } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -13,7 +13,6 @@ export default function GuestMosqueSelector() {
   const [mosques, setMosques] = useState<Mosque[]>([]);
   const [loading, setLoading] = useState(true);
   const [selecting, setSelecting] = useState(false);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const router = useRouter();
   const locale = useLocale();
   const t = useTranslations('navigation');
@@ -21,26 +20,7 @@ export default function GuestMosqueSelector() {
 
   useEffect(() => {
     fetchMosques();
-    checkAuthStatus();
   }, []);
-
-  const checkAuthStatus = async () => {
-    try {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (user) {
-        // Check if user has Imam or Admin role
-        const { data: userData } = await supabase
-          .from('users')
-          .select('role')
-          .eq('auth_user_id', user.id)
-          .single();
-        
-        setIsAuthenticated(userData?.role === 'Imam' || userData?.role === 'Admin');
-      }
-    } catch (error) {
-      console.error('Error checking auth status:', error);
-    }
-  };
 
   const fetchMosques = async () => {
     try {
@@ -85,16 +65,6 @@ export default function GuestMosqueSelector() {
     } catch (error) {
       console.error('Error selecting mosque:', error);
       setSelecting(false);
-    }
-  };
-
-  const handleAddKhutbah = () => {
-    if (isAuthenticated) {
-      // Redirect to new khutbah creation page
-      router.push(`/${locale}/dashboard/lectures/new`);
-    } else {
-      // Redirect to login page
-      router.push(`/${locale}/auth/login`);
     }
   };
 
@@ -173,39 +143,10 @@ export default function GuestMosqueSelector() {
             >
               Anmelden
             </Button>
-            
-            {/* Temporary Debug Button - Remove this later */}
-            <div className="mt-4">
-              <Button 
-                onClick={handleAddKhutbah}
-                className="bg-red-500 hover:bg-red-600 text-white"
-              >
-                <Plus className="w-4 h-4 mr-2" />
-                Khutbah hinzufügen (Debug)
-              </Button>
-            </div>
           </div>
 
           {/* Floating Plus Button for Adding Khutbah */}
-          <Button
-            onClick={handleAddKhutbah}
-            className="fixed bottom-6 right-6 z-[9999] rounded-full w-16 h-16 shadow-2xl hover:shadow-3xl transition-all duration-200 bg-blue-600 hover:bg-blue-700 text-white border-2 border-white"
-            title={isAuthenticated ? "Neue Khutbah hinzufügen" : "Anmelden um Khutbah hinzuzufügen"}
-            style={{
-              position: 'fixed',
-              bottom: '24px',
-              right: '24px',
-              zIndex: 9999,
-              width: '64px',
-              height: '64px',
-              borderRadius: '50%',
-              backgroundColor: '#2563eb',
-              boxShadow: '0 10px 25px rgba(0,0,0,0.2)',
-            }}
-          >
-            <Plus className="w-7 h-7" />
-            <span className="sr-only">Khutbah hinzufügen</span>
-          </Button>
+          <FloatingAddButton />
         </div>
       </div>
     </>

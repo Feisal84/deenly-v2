@@ -1,10 +1,11 @@
+import FloatingAddButton from "@/components/floating-add-button";
+import KhutbasDisplay from "@/components/khutbas-display";
+import MosqueAnnouncement from "@/components/mosque-announcement";
+import MosqueHeader from "@/components/mosque-header";
+import PrayerTimesDisplayAdhan from "@/components/prayer-times-display-adhan";
+import { Lecture, Mosque } from "@/lib/types";
 import { createClient } from "@/utils/supabase/server";
 import { notFound } from "next/navigation";
-import { Mosque, Lecture } from "@/lib/types";
-import PrayerTimesDisplayAdhan from "@/components/prayer-times-display-adhan";
-import KhutbasDisplay from "@/components/khutbas-display";
-import MosqueHeader from "@/components/mosque-header";
-import MosqueAnnouncement from "@/components/mosque-announcement";
 
 export default async function MoscheeDetailPage({ params }: { params: Promise<{ handle: string; locale: string }> }) {
   const supabase = await createClient();
@@ -84,16 +85,21 @@ export default async function MoscheeDetailPage({ params }: { params: Promise<{ 
   }
   
   return (
-    <div className="w-full max-w-4xl mx-auto pt-10 md:pt-4 lg:pt-0 px-4 sm:px-6 lg:px-8 mt-16 sm:mt-20">
-      <MosqueHeader mosque={mosque} />
-      
-      <MosqueAnnouncement mosque={mosque} shouldShow={shouldShowAnnouncement(mosque)} />
-      
-      {/* Gebetszeiten Komponente */}
-      <PrayerTimesDisplayAdhan mosque={mosque} />
+    <>
+      <div className="w-full max-w-4xl mx-auto pt-10 md:pt-4 lg:pt-0 px-4 sm:px-6 lg:px-8 mt-16 sm:mt-20">
+        <MosqueHeader mosque={mosque} />
+        
+        <MosqueAnnouncement mosque={mosque} shouldShow={shouldShowAnnouncement(mosque)} />
+        
+        {/* Gebetszeiten Komponente */}
+        <PrayerTimesDisplayAdhan mosque={mosque} />
 
-      {/* Khutbas Komponente */}
-      <KhutbasDisplay initialKhutbas={khutbas} mosqueId={mosque.id} mosqueHandle={handle} />
-    </div>
+        {/* Khutbas Komponente */}
+        <KhutbasDisplay initialKhutbas={khutbas} mosqueId={mosque.id} mosqueHandle={handle} />
+      </div>
+      
+      {/* Floating Add Button for Khutbahs */}
+      <FloatingAddButton mosqueId={mosque.id} />
+    </>
   );
 }
