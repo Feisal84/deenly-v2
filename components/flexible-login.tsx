@@ -18,7 +18,7 @@ export default function FlexibleLoginPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
-  const t = useTranslations('auth');
+  const t = useTranslations('navigation'); // Changed from 'auth' to 'navigation'
   const locale = useLocale();
   const supabase = createClient();
 
@@ -165,7 +165,7 @@ export default function FlexibleLoginPage() {
     <form onSubmit={handleEmailSubmit} className="space-y-4">
       <div>
         <label htmlFor="email" className="block text-sm font-medium mb-1">
-          {t('email', { defaultValue: 'E-Mail' })}
+          E-Mail
         </label>
         <Input
           id="email"
@@ -179,7 +179,7 @@ export default function FlexibleLoginPage() {
       
       <div>
         <label htmlFor="password" className="block text-sm font-medium mb-1">
-          {t('password', { defaultValue: 'Passwort' })} 
+          Passwort
           <span className="text-sm text-muted-foreground">(optional - falls verfügbar)</span>
         </label>
         <Input
