@@ -13,21 +13,28 @@ export async function incrementLectureViews(lectureId: string): Promise<void> {
   try {
     const supabase = await createClient();
     
-    // Verwende die SQL-Funktion zum sicheren Inkrementieren
-    const { error } = await supabase.rpc('increment_lecture_views', { 
+    // Verwende zuerst die SQL-Funktion zum sicheren Inkrementieren
+    const { error: rpcError } = await supabase.rpc('increment_lecture_views', { 
       lecture_id: lectureId 
     });
     
-    if (error) {
-      console.error("Fehler beim Aktualisieren der Aufrufe:", error);
-      // Fallback: Wenn RPC nicht funktioniert, verwende einfaches SQL
+    // Wenn RPC-Funktion nicht existiert oder fehlschlägt, verwende Fallback
+    if (rpcError) {
+      console.warn("RPC-Funktion nicht verfügbar, verwende Fallback:", rpcError.message);
+      
+      // Fallback: Hole aktuellen Wert und inkrementiere
       const { data: currentLecture, error: fetchError } = await supabase
         .from('lectures')
         .select('num_views')
         .eq('id', lectureId)
         .single();
         
-      if (!fetchError && currentLecture) {
+      if (fetchError) {
+        console.error("Fehler beim Abrufen des aktuellen Wertes:", fetchError);
+        return;
+      }
+      
+      if (currentLecture) {
         const newViews = (currentLecture.num_views || 0) + 1;
         const { error: updateError } = await supabase
           .from('lectures')
@@ -35,12 +42,16 @@ export async function incrementLectureViews(lectureId: string): Promise<void> {
           .eq('id', lectureId);
           
         if (updateError) {
-          console.error("Fallback Update-Fehler:", updateError);
+          console.error("Fehler beim Update der Aufrufe:", updateError);
+        } else {
+          console.log(`Aufrufe erfolgreich aktualisiert: ${newViews} für Lecture ${lectureId}`);
         }
       }
+    } else {
+      console.log(`Aufrufe erfolgreich über RPC inkrementiert für Lecture ${lectureId}`);
     }
   } catch (error) {
-    console.error("Fehler beim Aktualisieren der Aufrufe:", error);
+    console.error("Unerwarteter Fehler beim Aktualisieren der Aufrufe:", error);
   }
 }
 
@@ -51,55 +62,76 @@ export async function incrementLectureViews(lectureId: string): Promise<void> {
  * - Gesamtanzahl der Aufrufe
  */
 export async function fetchStatistics() {
+  const supabase = await createClient();
+  
   try {
-    const supabase = await createClient();
-    
-    // Moscheen zählen
-    const { count: mosqueCount, error: mosqueError } = await supabase
-      .from('mosques')
-      .select('*', { count: 'exact', head: true });
-    
-    if (mosqueError) {
-      console.error("Fehler beim Zählen der Moscheen:", mosqueError);
-    }
-    
-    // Lectures zählen
-    const { count: lectureCount, error: lectureError } = await supabase
-      .from('lectures')
-      .select('*', { count: 'exact', head: true })
-      .eq('status', 'Public');
-    
-    if (lectureError) {
-      console.error("Fehler beim Zählen der Lectures:", lectureError);
-    }
-    
-    // Aufrufe summieren
-    const { data: viewsData, error: viewsError } = await supabase
-      .from('lectures')
-      .select('num_views')
-      .eq('status', 'Public');
-    
-    let totalViews = 0;
-    if (viewsError) {
-      console.error("Fehler beim Abrufen der Aufrufe:", viewsError);
-    } else {
-      totalViews = viewsData?.reduce((sum, lecture) => sum + (lecture.num_views || 0), 0) || 0;
-    }
-    
+    // Anzahl der Moscheen
+    const { count: mosqueCount } = await supabase
+      .from("mosques")
+      .select("*", { count: "exact", head: true });
+
+    // Anzahl der öffentlichen Lectures
+    const { count: lectureCount } = await supabase
+      .from("lectures")
+      .select("*", { count: "exact", head: true })
+      .eq("status", "Public");
+
+    // Gesamtanzahl der Aufrufe
+    const { data: viewsData } = await supabase
+      .from("lectures")
+      .select("num_views")
+      .eq("status", "Public");
+
+    const totalViews = viewsData?.reduce((sum, lecture) => sum + (lecture.num_views || 0), 0) || 0;
+
     return {
-      mosques: mosqueCount || 0,
-      lectures: lectureCount || 0,
-      views: totalViews
+      mosqueCount: mosqueCount || 0,
+      lectureCount: lectureCount || 0,
+      totalViews
     };
-    
   } catch (error) {
-    console.error("Fehler beim Abrufen der Statistiken:", error);
-    
-    // Fallback zu den Standard-Werten
+    console.error("Fehler beim Laden der Statistiken:", error);
     return {
-      mosques: 120,
-      lectures: 5000,
-      views: 250000
+      mosqueCount: 0,
+      lectureCount: 0,
+      totalViews: 0
     };
+  }
+}
+
+/**
+ * Creates a new lecture for authenticated imams/admins
+ */
+export async function createLecture(lectureData: {
+  title: string;
+  content: string;
+  type: string;
+  status: 'Draft' | 'Public';
+  mosque_id: string;
+  created_by: string;
+}) {
+  const supabase = await createClient();
+  
+  try {
+    const { data, error } = await supabase
+      .from("lectures")
+      .insert({
+        ...lectureData,
+        num_views: 0,
+        title_translations: { orig: lectureData.title },
+        translation_map: {}
+      })
+      .select()
+      .single();
+
+    if (error) {
+      console.error("Fehler beim Erstellen des Vortrags:", error);
+      throw new Error(`Fehler beim Erstellen des Vortrags: ${error.message}`);
+    }
+
+    return { success: true, data };
+  } catch (error) {
+    console.error("Unerwarteter Fehler beim Erstellen des Vortrags:", error);
+    throw error;
   }
 }

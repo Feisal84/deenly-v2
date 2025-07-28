@@ -1,9 +1,9 @@
 "use client";
 
-import { useTranslations } from "next-intl";
-import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
 import { fetchStatistics } from "@/app/actions";
+import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
+import { useEffect, useState } from "react";
 
 interface StatProps {
   value: number;
@@ -12,6 +12,9 @@ interface StatProps {
 }
 
 const StatItem = ({ value, label, delay = 0 }: StatProps) => {
+  // Ensure value is always a number to prevent undefined errors
+  const safeValue = typeof value === 'number' ? value : 0;
+  
   return (
     <motion.div 
       className="flex flex-col items-center p-6 bg-[hsl(var(--deenly-background))]/10% dark:bg-[hsl(var(--deenly-text-primary))]/10% rounded-xl transition-all duration-300 hover:scale-105"
@@ -21,7 +24,7 @@ const StatItem = ({ value, label, delay = 0 }: StatProps) => {
       viewport={{ once: true }}
     >
       <span className="text-4xl md:text-5xl font-bold text-white">
-        {value.toLocaleString()}
+        {safeValue.toLocaleString()}
       </span>
       <span className="text-[hsl(var(--deenly-background))] dark:text-[hsl(var(--deenly-text))] mt-2 text-lg font-medium">{label}</span>
     </motion.div>
@@ -45,12 +48,13 @@ export default function StatsSection() {
       try {
         const data = await fetchStatistics();
         setStats({
-          mosques: data.mosques,
-          lectures: data.lectures,
-          views: data.views
+          mosques: data.mosqueCount || 0,
+          lectures: data.lectureCount || 0,
+          views: data.totalViews || 0
         });
       } catch (error) {
         console.error("Fehler beim Laden der Statistiken:", error);
+        // Keep default values (0) if error occurs
       } finally {
         setIsLoading(false);
       }

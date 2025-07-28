@@ -1,7 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -H 0.0.0.0",
+    "dev:mobile": "next dev -H 0.0.0.0 -p 3000",
     "build": "next build",
     "start": "next start"
   },
@@ -11,7 +12,7 @@
     "@radix-ui/react-label": "^2.1.0",
     "@radix-ui/react-slot": "^1.1.0",
     "@supabase/ssr": "^0.6.1",
-    "@supabase/supabase-js": "^2.50.5",
+    "@supabase/supabase-js": "^2.52.1",
     "adhan": "^4.4.3",
     "autoprefixer": "10.4.20",
     "class-variance-authority": "^0.7.0",

@@ -49,13 +49,12 @@ export default async function LecturePage({
       mosqueName = mosqueData.name;
     }
 
-    // Aktualisiere die Aufrufe (num_views) mit Fehlerbehandlung
-    try {
-      await incrementLectureViews(lectureId);
-    } catch (viewError) {
-      // Fehler beim Inkrementieren der Aufrufe sollten die Seite nicht blockieren
-      console.warn("Konnte Aufrufe nicht aktualisieren:", viewError);
-    }
+    // Aktualisiere die Aufrufe (num_views) mit verbesserter Fehlerbehandlung
+    // Dies läuft asynchron im Hintergrund und blockiert die Seite nicht
+    incrementLectureViews(lectureId).catch((viewError) => {
+      // Stille Behandlung von View-Increment-Fehlern
+      console.warn("View-Count konnte nicht aktualisiert werden:", viewError?.message || viewError);
+    });
 
   } catch (error) {
     console.error("Fehler beim Laden der Daten:", error);

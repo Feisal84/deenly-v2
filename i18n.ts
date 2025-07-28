@@ -1,12 +1,12 @@
-import {getRequestConfig} from 'next-intl/server';
-import {defaultLocale} from './i18n.config';
+import { getRequestConfig } from 'next-intl/server';
+import { defaultLocale, locales } from './i18n.config';
  
 export default getRequestConfig(async ({locale}) => {
-  // Stelle sicher, dass locale immer ein String ist
-  const resolvedLocale = locale || defaultLocale;
+  // Ensure locale is valid, fallback to default if undefined or invalid
+  const validLocale = locale && locales.includes(locale as any) ? locale : defaultLocale;
   
   return {
-    locale: resolvedLocale,
-    messages: (await import(`./messages/${resolvedLocale}/common.json`)).default
+    locale: validLocale,
+    messages: (await import(`./messages/${validLocale}/common.json`)).default
   };
 });
