@@ -20,6 +20,7 @@
       "ar": "Arabic"
     }
   },
+  "dashboard": "Dashboard",
   "footer": {
     "madeBy": "Made by"
   },
@@ -131,7 +132,13 @@
     "increaseFontSize": "Increase font size",
     "resetFontSize": "Reset font size",
     "decreaseFontSizeSymbol": "A-",
-    "increaseFontSizeSymbol": "A+"
+    "increaseFontSizeSymbol": "A+",
+    "backToDashboard": "Back to Dashboard",
+    "manageLectures": "Manage Lectures",
+    "addLecture": "Add Lecture",
+    "noLectures": "No Lectures Available",
+    "noLecturesDescription": "You haven't created any lectures yet. Create your first lecture to get started.",
+    "createFirstLecture": "Create First Lecture"
   },
   "hero": {
     "badges": {

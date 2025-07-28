@@ -20,6 +20,7 @@
       "ar": "Arapça"
     }
   },
+  "dashboard": "Panel",
   "footer": {
     "madeBy": "Yapan"
   },
@@ -131,7 +132,13 @@
     "increaseFontSize": "Yazı boyutunu büyüt",
     "resetFontSize": "Varsayılan boyut",
     "decreaseFontSizeSymbol": "A-",
-    "increaseFontSizeSymbol": "A+"
+    "increaseFontSizeSymbol": "A+",
+    "backToDashboard": "Panele Dön",
+    "manageLectures": "Konferansları Yönet",
+    "addLecture": "Konferans Ekle",
+    "noLectures": "Mevcut Konferans Yok",
+    "noLecturesDescription": "Henüz hiç konferans oluşturmadınız. Başlamak için ilk konferansınızı oluşturun.",
+    "createFirstLecture": "İlk Konferansı Oluştur"
   },
   "hero": {
     "badges": {

@@ -20,6 +20,7 @@
       "ar": "العربية"
     }
   },
+  "dashboard": "لوحة التحكم",
   "footer": {
     "madeBy": "صنع بواسطة"
   },
@@ -132,7 +133,12 @@
     "resetFontSize": "إعادة ضبط الحجم",
     "decreaseFontSizeSymbol": "أ-",
     "increaseFontSizeSymbol": "أ+",
-    "backToDashboard": "العودة إلى لوحة التحكم"
+    "backToDashboard": "العودة إلى لوحة التحكم",
+    "manageLectures": "إدارة المحاضرات",
+    "addLecture": "إضافة محاضرة",
+    "noLectures": "لا توجد محاضرات متاحة",
+    "noLecturesDescription": "لم تنشئ أي محاضرات بعد. أنشئ محاضرتك الأولى للبدء.",
+    "createFirstLecture": "إنشاء المحاضرة الأولى"
   },
   "hero": {
     "badges": {

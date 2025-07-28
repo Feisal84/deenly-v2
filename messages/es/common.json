@@ -20,6 +20,7 @@
       "ar": "Árabe"
     }
   },
+  "dashboard": "Panel de Control",
   "footer": {
     "madeBy": "Desarrollado por"
   },
@@ -131,7 +132,13 @@
     "increaseFontSize": "Aumentar tamaño de fuente",
     "resetFontSize": "Restablecer tamaño de fuente",
     "decreaseFontSizeSymbol": "A-",
-    "increaseFontSizeSymbol": "A+"
+    "increaseFontSizeSymbol": "A+",
+    "backToDashboard": "Volver al Panel",
+    "manageLectures": "Gestionar Conferencias",
+    "addLecture": "Añadir Conferencia",
+    "noLectures": "No hay Conferencias Disponibles",
+    "noLecturesDescription": "Aún no has creado ninguna conferencia. Crea tu primera conferencia para comenzar.",
+    "createFirstLecture": "Crear Primera Conferencia"
   },
   "hero": {
     "badges": {

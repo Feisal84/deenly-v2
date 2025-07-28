@@ -20,6 +20,7 @@
       "ar": "Arabe"
     }
   },
+  "dashboard": "Tableau de Bord",
   "footer": {
     "madeBy": "Fait par"
   },
@@ -132,7 +133,12 @@
     "resetFontSize": "Taille par défaut",
     "decreaseFontSizeSymbol": "A-",
     "increaseFontSizeSymbol": "A+",
-    "backToDashboard": "Retour au Tableau de Bord"
+    "backToDashboard": "Retour au Tableau de Bord",
+    "manageLectures": "Gérer les Conférences",
+    "addLecture": "Ajouter une Conférence",
+    "noLectures": "Aucune Conférence Disponible",
+    "noLecturesDescription": "Vous n'avez pas encore créé de conférences. Créez votre première conférence pour commencer.",
+    "createFirstLecture": "Créer la Première Conférence"
   },
   "hero": {
     "badges": {

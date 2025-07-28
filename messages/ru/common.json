@@ -20,6 +20,7 @@
       "ar": "Арабский"
     }
   },
+  "dashboard": "Панель Управления",
   "footer": {
     "madeBy": "Сделано"
   },
@@ -132,7 +133,12 @@
     "resetFontSize": "Сбросить размер",
     "decreaseFontSizeSymbol": "A-",
     "increaseFontSizeSymbol": "A+",
-    "backToDashboard": "Вернуться к Панели"
+    "backToDashboard": "Вернуться к Панели",
+    "manageLectures": "Управление Лекциями",
+    "addLecture": "Добавить Лекцию",
+    "noLectures": "Нет Доступных Лекций",
+    "noLecturesDescription": "Вы еще не создали ни одной лекции. Создайте свою первую лекцию, чтобы начать.",
+    "createFirstLecture": "Создать Первую Лекцию"
   },
   "hero": {
     "badges": {

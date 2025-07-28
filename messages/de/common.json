@@ -20,6 +20,7 @@
       "ar": "Arabisch"
     }
   },
+  "dashboard": "Dashboard",
   "footer": {
     "madeBy": "Entwickelt von"
   },
@@ -131,7 +132,13 @@
     "increaseFontSize": "Schriftgröße vergrößern",
     "resetFontSize": "Standardgröße",
     "decreaseFontSizeSymbol": "A-",
-    "increaseFontSizeSymbol": "A+"
+    "increaseFontSizeSymbol": "A+",
+    "backToDashboard": "Zurück zum Dashboard",
+    "manageLectures": "Vorträge verwalten",
+    "addLecture": "Vortrag hinzufügen",
+    "noLectures": "Keine Vorträge verfügbar",
+    "noLecturesDescription": "Sie haben noch keine Vorträge erstellt. Erstellen Sie Ihren ersten Vortrag, um zu beginnen.",
+    "createFirstLecture": "Ersten Vortrag erstellen"
   },
   "hero": {
     "badges": {
