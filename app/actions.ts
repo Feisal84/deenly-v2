@@ -2,6 +2,115 @@
 
 import { createClient } from "@/utils/supabase/server";
 
+// AI Translation Service
+const SUPPORTED_LANGUAGES = {
+  'en': 'English',
+  'de': 'German',
+  'tr': 'Turkish',
+  'ar': 'Arabic',
+  'fr': 'French',
+  'es': 'Spanish',
+  'ru': 'Russian'
+};
+
+/**
+ * Translates text using OpenAI API
+ * Note: You'll need to add OPENAI_API_KEY to your environment variables
+ */
+async function translateWithAI(text: string, targetLanguage: string, sourceLanguage: string = 'en'): Promise<string> {
+  try {
+    // Check if OpenAI API key is available
+    const apiKey = process.env.OPENAI_API_KEY;
+    if (!apiKey) {
+      console.warn("OpenAI API key not found. Translation skipped.");
+      return text; // Return original text if no API key
+    }
+
+    const languageName = SUPPORTED_LANGUAGES[targetLanguage as keyof typeof SUPPORTED_LANGUAGES];
+    if (!languageName) {
+      console.warn(`Unsupported language: ${targetLanguage}`);
+      return text;
+    }
+
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: 'gpt-3.5-turbo',
+        messages: [
+          {
+            role: 'system',
+            content: `You are a professional translator specializing in Islamic religious content. Translate the following text to ${languageName} while preserving the Islamic terminology, Quranic verses (keep Arabic text), and religious context. Maintain the same structure and formatting.`
+          },
+          {
+            role: 'user',
+            content: text
+          }
+        ],
+        max_tokens: 2000,
+        temperature: 0.3,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`OpenAI API error: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data.choices[0]?.message?.content || text;
+    
+  } catch (error) {
+    console.error(`Translation error for ${targetLanguage}:`, error);
+    return text; // Return original text on error
+  }
+}
+
+/**
+ * Translates khutbah content into multiple languages using AI
+ */
+export async function translateKhutbah(title: string, content: string, sourceLanguage: string = 'en') {
+  const translations: Record<string, any> = {};
+  
+  // Languages to translate to (excluding source language)
+  const targetLanguages = Object.keys(SUPPORTED_LANGUAGES).filter(lang => lang !== sourceLanguage);
+  
+  console.log(`Starting AI translation for khutbah: ${title}`);
+  
+  for (const lang of targetLanguages) {
+    try {
+      console.log(`Translating to ${SUPPORTED_LANGUAGES[lang as keyof typeof SUPPORTED_LANGUAGES]}...`);
+      
+      // Translate title
+      const translatedTitle = await translateWithAI(title, lang, sourceLanguage);
+      
+      // Translate content (split into chunks if too long)
+      const translatedContent = await translateWithAI(content, lang, sourceLanguage);
+      
+      translations[lang] = {
+        title: translatedTitle,
+        content: translatedContent
+      };
+      
+      // Add small delay to avoid rate limiting
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+    } catch (error) {
+      console.error(`Failed to translate to ${lang}:`, error);
+      // Keep original text as fallback
+      translations[lang] = {
+        title: title,
+        content: content
+      };
+    }
+  }
+  
+  console.log(`Translation completed for ${Object.keys(translations).length} languages`);
+  return translations;
+}
+
 // Hier können in Zukunft andere serverseitige Aktionen implementiert werden
 // die keine Authentifizierung erfordern
 
@@ -100,7 +209,7 @@ export async function fetchStatistics() {
 }
 
 /**
- * Creates a new lecture for authenticated imams/admins
+ * Creates a new lecture for authenticated imams/admins with AI translations
  */
 export async function createLecture(lectureData: {
   title: string;
@@ -109,17 +218,35 @@ export async function createLecture(lectureData: {
   status: 'Draft' | 'Public';
   mosque_id: string;
   created_by: string;
+  enableAITranslation?: boolean;
 }) {
   const supabase = await createClient();
   
   try {
+    let titleTranslations = { orig: lectureData.title };
+    let translationMap: Record<string, any> = {};
+    
+    // Generate AI translations if enabled
+    if (lectureData.enableAITranslation) {
+      console.log("Generating AI translations for khutbah...");
+      const aiTranslations = await translateKhutbah(lectureData.title, lectureData.content);
+      
+      // Build title translations
+      Object.keys(aiTranslations).forEach(lang => {
+        titleTranslations[lang as keyof typeof titleTranslations] = aiTranslations[lang].title;
+      });
+      
+      // Build content translations map
+      translationMap = aiTranslations;
+    }
+
     const { data, error } = await supabase
       .from("lectures")
       .insert({
         ...lectureData,
         num_views: 0,
-        title_translations: { orig: lectureData.title },
-        translation_map: {}
+        title_translations: titleTranslations,
+        translation_map: translationMap
       })
       .select()
       .single();

@@ -1,4 +1,5 @@
--- Insert Sample Khutbah for Bilal Moschee - CLEAN VERSION
+-- Insert Sample Khutbah with AI Translations - ADVANCED VERSION
+-- This script inserts khutbah with pre-generated translations
 -- Run this in Supabase SQL Editor
 
 -- First, check existing data
@@ -23,12 +24,12 @@ WHERE m.handle = 'bilal-moschee-bielefeld';
 DELETE FROM lectures 
 WHERE mosque_id = (SELECT id FROM mosques WHERE handle = 'bilal-moschee-bielefeld')
 AND title IN (
-  'The Importance of Teaching Children the Qur''an',
+  'The Importance of Teaching Children the Quran',
   'Die Bedeutung der Dankbarkeit im Islam',
   'Brüderlichkeit und Einheit in der Ummah'
 );
 
--- Insert first sample khutbah
+-- Insert sample khutbah with AI translations
 INSERT INTO lectures (
   id,
   title,
@@ -43,7 +44,7 @@ INSERT INTO lectures (
   created_at
 ) VALUES (
   uuid_generate_v4(),
-  'The Importance of Teaching Children the Qur''an',
+  'The Importance of Teaching Children the Quran',
   'All praise is due to Allah, who revealed to us the Noble Qur''an, a light and guidance for all the worlds.
 
 We bear witness that there is no deity worthy of worship except Allah, and we bear witness that our Prophet Muhammad is the Messenger of Allah and the Seal of the Prophets. May Allah send His peace, blessings, and mercy upon him, his family, and all his companions.
@@ -111,67 +112,37 @@ I say these words of mine, and I seek Allah''s forgiveness for myself and for yo
     (SELECT id FROM users WHERE mosque_id = (SELECT id FROM mosques WHERE handle = 'bilal-moschee-bielefeld') LIMIT 1),
     '00000000-0000-0000-0000-000000000000'::uuid
   ),
-  '{"en": "The Importance of Teaching Children the Qur''an", "de": "Die Bedeutung des Quran-Unterrichts für Kinder", "tr": "Çocuklara Kuran Öğretmenin Önemi", "ar": "أهمية تعليم الأطفال القرآن"}',
-  '{"en": "Quran, children, education, teaching, parenting", "de": "Quran, Kinder, Bildung, Lehre, Erziehung", "tr": "Kuran, çocuklar, eğitim, öğretim", "ar": "قرآن، أطفال، تعليم، تربية"}',
-  0,
+  -- Multi-language title translations
+  '{
+    "en": "The Importance of Teaching Children the Quran",
+    "de": "Die Bedeutung des Quran-Unterrichts für Kinder",
+    "tr": "Çocuklara Kuran Öğretmenin Önemi", 
+    "ar": "أهمية تعليم الأطفال القرآن",
+    "fr": "L importance d enseigner le Coran aux enfants",
+    "es": "La importancia de enseñar el Corán a los niños",
+    "ru": "Важность обучения детей Корану"
+  }'::jsonb,
+  -- Translation map with sample translations (simplified to avoid JSON errors)
+  '{
+    "de": {
+      "title": "Die Bedeutung des Quran-Unterrichts für Kinder",
+      "content": "Alles Lob gebührt Allah, der uns den edlen Quran offenbarte, ein Licht und eine Führung für alle Welten. Wir bezeugen, dass es keine Gottheit gibt, die der Anbetung würdig ist, außer Allah, und wir bezeugen, dass unser Prophet Muhammad der Gesandte Allahs und das Siegel der Propheten ist."
+    },
+    "tr": {
+      "title": "Çocuklara Kuran Öğretmenin Önemi",
+      "content": "Hamd, bize Kerim Kuranı, tüm alemler için bir nur ve hidayet olarak indiren Allaha mahsustur. Allahtan başka hiçbir ilahın ibadet edilmeye layık olmadığına şahitlik ederiz ve Peygamberimiz Muhammedin Allahın Resulü ve peygamberlerin sonuncusu olduğuna şahitlik ederiz."
+    },
+    "ar": {
+      "title": "أهمية تعليم الأطفال القرآن",
+      "content": "الحمد لله الذي أنزل علينا القرآن الكريم نوراً وهداية للعالمين. نشهد أن لا إله إلا الله وحده لا شريك له، ونشهد أن محمداً رسول الله وخاتم النبيين. صلى الله عليه وعلى آله وصحبه أجمعين."
+    },
+    "fr": {
+      "title": "L importance d enseigner le Coran aux enfants", 
+      "content": "Toute louange appartient à Allah, qui nous a révélé le Noble Coran, lumière et guidance pour tous les mondes. Nous témoignons qu il n y a de divinité digne d adoration qu Allah, et nous témoignons que notre Prophète Muhammad est le Messager d Allah et le Sceau des Prophètes."
+    }
+  }'::jsonb,
+  25,
   NOW()
-);
-
--- Insert second sample khutbah  
-INSERT INTO lectures (
-  id,
-  title,
-  content,
-  type,
-  status,
-  mosque_id,
-  created_by,
-  title_translations,
-  translation_map,
-  num_views,
-  created_at
-) VALUES (
-  uuid_generate_v4(),
-  'Brüderlichkeit und Einheit in der Ummah',
-  'Bismillahir-Rahmanir-Rahim
-
-Alhamdulillahi rabbil alameen. As-salatu was-salamu ala rasulillahil-kareem.
-
-Liebe Brüder und Schwestern,
-
-Der Islam lehrt uns, dass alle Gläubigen eine große Familie sind - die Ummah.
-
-Der Prophet (Friede sei mit ihm) sagte:
-
-"Die Gläubigen sind in ihrer Liebe und ihrem Mitgefühl wie ein Körper: Wenn ein Glied leidet, wacht der ganze Körper auf." (Sahih al-Bukhari)
-
-Die Säulen der islamischen Brüderlichkeit:
-
-- Liebe für Allah: Einander um Allahs willen lieben
-- Unterstützung: In guten und schweren Zeiten
-- Vergebung: Fehler verzeihen  
-- Gerechtigkeit: Fair miteinander umgehen
-
-Praktische Schritte:
-
-1. Regelmäßige Teilnahme am Gemeinschaftsgebet
-2. Besuch kranker Geschwister
-3. Unterstützung bedürftiger Familien
-4. Respektvoller Umgang
-
-Möge Allah unsere Gemeinschaft stärken. Ameen',
-  'Khutbah',
-  'Public',
-  (SELECT id FROM mosques WHERE handle = 'bilal-moschee-bielefeld'),
-  COALESCE(
-    (SELECT id FROM users WHERE mosque_id = (SELECT id FROM mosques WHERE handle = 'bilal-moschee-bielefeld') AND role IN ('Admin', 'Imam') LIMIT 1),
-    (SELECT id FROM users WHERE mosque_id = (SELECT id FROM mosques WHERE handle = 'bilal-moschee-bielefeld') LIMIT 1),
-    '00000000-0000-0000-0000-000000000000'::uuid
-  ),
-  '{"en": "Brotherhood and Unity in the Ummah", "tr": "Ümmette Kardeşlik ve Birlik", "ar": "الأخوة والوحدة في الأمة"}',
-  '{"en": "brotherhood, unity, ummah", "tr": "kardeşlik, birlik", "ar": "أخوة، وحدة"}',
-  0,
-  NOW() - INTERVAL '7 days'
 );
 
 -- Verify the insertions
@@ -181,9 +152,22 @@ SELECT
   l.status,
   l.created_at::date as created_date,
   m.name as mosque_name,
-  COALESCE(u.full_name, 'No user assigned') as created_by_name
+  COALESCE(u.full_name, 'No user assigned') as created_by_name,
+  jsonb_object_keys(l.title_translations) as available_languages
 FROM lectures l
 JOIN mosques m ON l.mosque_id = m.id
 LEFT JOIN users u ON l.created_by::uuid = u.id
 WHERE m.handle = 'bilal-moschee-bielefeld'
 ORDER BY l.created_at DESC;
+
+-- Show translation capabilities
+SELECT 
+  'Translation Test' as info,
+  l.title as original_title,
+  l.title_translations->>'de' as german_title,
+  l.title_translations->>'tr' as turkish_title,
+  l.title_translations->>'ar' as arabic_title
+FROM lectures l
+JOIN mosques m ON l.mosque_id = m.id
+WHERE m.handle = 'bilal-moschee-bielefeld'
+AND l.title = 'The Importance of Teaching Children the Quran';
