@@ -20,7 +20,17 @@
       "ar": "العربية"
     }
   },
-  "dashboard": "لوحة التحكم",
+  "dashboard": {
+    "title": "لوحة التحكم",
+    "welcome": "أهلاً وسهلاً",
+    "addLecture": "إضافة محاضرة جديدة",
+    "addLectureDescription": "إنشاء خطبة أو محاضرة جديدة",
+    "createLecture": "إنشاء محاضرة",
+    "viewLectures": "عرض المحاضرات",
+    "manageLectures": "إدارة المحاضرات",
+    "statistics": "الإحصائيات",
+    "settings": "الإعدادات"
+  },
   "footer": {
     "madeBy": "صنع بواسطة"
   },

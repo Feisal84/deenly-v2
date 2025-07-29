@@ -20,7 +20,17 @@
       "ar": "Arabe"
     }
   },
-  "dashboard": "Tableau de Bord",
+  "dashboard": {
+    "title": "Tableau de Bord",
+    "welcome": "Bienvenue",
+    "addLecture": "Ajouter une Nouvelle Conférence",
+    "addLectureDescription": "Créer un nouveau khutbah ou une conférence",
+    "createLecture": "Créer une Conférence",
+    "viewLectures": "Voir les Conférences",
+    "manageLectures": "Gérer les Conférences",
+    "statistics": "Statistiques",
+    "settings": "Paramètres"
+  },
   "footer": {
     "madeBy": "Fait par"
   },

@@ -20,7 +20,17 @@
       "ar": "Arapça"
     }
   },
-  "dashboard": "Panel",
+  "dashboard": {
+    "title": "Panel",
+    "welcome": "Hoş Geldiniz",
+    "addLecture": "Yeni Konuşma Ekle",
+    "addLectureDescription": "Yeni bir hutbe veya konuşma oluşturun",
+    "createLecture": "Konuşma Oluştur",
+    "viewLectures": "Konuşmaları Görüntüle",
+    "manageLectures": "Konuşmaları Yönet",
+    "statistics": "İstatistikler",
+    "settings": "Ayarlar"
+  },
   "footer": {
     "madeBy": "Yapan"
   },

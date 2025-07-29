@@ -20,7 +20,17 @@
       "ar": "Арабский"
     }
   },
-  "dashboard": "Панель Управления",
+  "dashboard": {
+    "title": "Панель Управления",
+    "welcome": "Добро пожаловать",
+    "addLecture": "Добавить Новую Лекцию",
+    "addLectureDescription": "Создать новую хутбу или лекцию",
+    "createLecture": "Создать Лекцию",
+    "viewLectures": "Просмотр Лекций",
+    "manageLectures": "Управление Лекциями",
+    "statistics": "Статистика",
+    "settings": "Настройки"
+  },
   "footer": {
     "madeBy": "Сделано"
   },

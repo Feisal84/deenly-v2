@@ -20,7 +20,17 @@
       "ar": "Arabic"
     }
   },
-  "dashboard": "Dashboard",
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome",
+    "addLecture": "Add New Lecture",
+    "addLectureDescription": "Create a new khutbah or lecture",
+    "createLecture": "Create Lecture",
+    "viewLectures": "View Lectures",
+    "manageLectures": "Manage Lectures",
+    "statistics": "Statistics",
+    "settings": "Settings"
+  },
   "footer": {
     "madeBy": "Made by"
   },

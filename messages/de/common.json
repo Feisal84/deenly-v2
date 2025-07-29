@@ -20,7 +20,17 @@
       "ar": "Arabisch"
     }
   },
-  "dashboard": "Dashboard",
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Willkommen",
+    "addLecture": "Neuen Vortrag hinzufügen",
+    "addLectureDescription": "Erstellen Sie eine neue Khutba oder einen Vortrag",
+    "createLecture": "Vortrag erstellen",
+    "viewLectures": "Vorträge anzeigen",
+    "manageLectures": "Vorträge verwalten",
+    "statistics": "Statistiken",
+    "settings": "Einstellungen"
+  },
   "footer": {
     "madeBy": "Entwickelt von"
   },

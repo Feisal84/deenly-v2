@@ -20,7 +20,17 @@
       "ar": "Árabe"
     }
   },
-  "dashboard": "Panel de Control",
+  "dashboard": {
+    "title": "Panel de Control",
+    "welcome": "Bienvenido",
+    "addLecture": "Agregar Nueva Conferencia",
+    "addLectureDescription": "Crear un nuevo khutbah o conferencia",
+    "createLecture": "Crear Conferencia",
+    "viewLectures": "Ver Conferencias",
+    "manageLectures": "Gestionar Conferencias",
+    "statistics": "Estadísticas",
+    "settings": "Configuraciones"
+  },
   "footer": {
     "madeBy": "Desarrollado por"
   },
