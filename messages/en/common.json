@@ -28,8 +28,12 @@
     "createLecture": "Create Lecture",
     "viewLectures": "View Lectures",
     "manageLectures": "Manage Lectures",
+    "manageLecturesDescription": "View and manage all your lectures",
     "statistics": "Statistics",
-    "settings": "Settings"
+    "settings": "Settings",
+    "logout": "Logout",
+    "recentActivity": "Recent Activity",
+    "noRecentActivity": "No recent activity to display"
   },
   "footer": {
     "madeBy": "Made by"

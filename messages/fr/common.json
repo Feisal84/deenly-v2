@@ -20,7 +20,15 @@
       "ar": "Arabe"
     }
   },
-  "dashboard": "Tableau de Bord",
+  "dashboard": {
+    "welcome": "Bienvenue",
+    "logout": "Se déconnecter",
+    "manageLectures": "Gérer les conférences",
+    "manageLecturesDescription": "Créer et modifier les khutbas pour votre mosquée",
+    "recentActivity": "Activité récente",
+    "noRecentActivity": "Aucune activité récente",
+    "stats": "Statistiques"
+  },
   "footer": {
     "madeBy": "Fait par"
   },

@@ -28,8 +28,13 @@
     "createLecture": "إنشاء محاضرة",
     "viewLectures": "عرض المحاضرات",
     "manageLectures": "إدارة المحاضرات",
+    "manageLecturesDescription": "إنشاء وتحرير الخطب لمسجدك",
     "statistics": "الإحصائيات",
-    "settings": "الإعدادات"
+    "settings": "الإعدادات",
+    "logout": "تسجيل الخروج",
+    "recentActivity": "النشاط الأخير",
+    "noRecentActivity": "لا يوجد نشاط حديث",
+    "stats": "الإحصائيات"
   },
   "footer": {
     "madeBy": "صنع بواسطة"

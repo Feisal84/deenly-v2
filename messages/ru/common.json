@@ -28,8 +28,13 @@
     "createLecture": "Создать Лекцию",
     "viewLectures": "Просмотр Лекций",
     "manageLectures": "Управление Лекциями",
+    "manageLecturesDescription": "Создавайте и редактируйте хутбы для вашей мечети",
     "statistics": "Статистика",
-    "settings": "Настройки"
+    "settings": "Настройки",
+    "logout": "Выйти",
+    "recentActivity": "Недавняя Активность",
+    "noRecentActivity": "Нет недавней активности",
+    "stats": "Статистика"
   },
   "footer": {
     "madeBy": "Сделано"

@@ -28,8 +28,13 @@
     "createLecture": "Konuşma Oluştur",
     "viewLectures": "Konuşmaları Görüntüle",
     "manageLectures": "Konuşmaları Yönet",
+    "manageLecturesDescription": "Camiiniz için hutbalar oluşturun ve düzenleyin",
     "statistics": "İstatistikler",
-    "settings": "Ayarlar"
+    "settings": "Ayarlar",
+    "logout": "Çıkış Yap",
+    "recentActivity": "Son Aktivite",
+    "noRecentActivity": "Son aktivite yok",
+    "stats": "İstatistikler"
   },
   "footer": {
     "madeBy": "Yapan"

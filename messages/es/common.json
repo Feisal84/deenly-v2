@@ -28,8 +28,13 @@
     "createLecture": "Crear Conferencia",
     "viewLectures": "Ver Conferencias",
     "manageLectures": "Gestionar Conferencias",
+    "manageLecturesDescription": "Crear y editar khutbas para tu mezquita",
     "statistics": "Estadísticas",
-    "settings": "Configuraciones"
+    "settings": "Configuraciones",
+    "logout": "Cerrar Sesión",
+    "recentActivity": "Actividad Reciente",
+    "noRecentActivity": "No hay actividad reciente",
+    "stats": "Estadísticas"
   },
   "footer": {
     "madeBy": "Desarrollado por"

@@ -28,8 +28,12 @@
     "createLecture": "Vortrag erstellen",
     "viewLectures": "Vorträge anzeigen",
     "manageLectures": "Vorträge verwalten",
+    "manageLecturesDescription": "Alle Ihre Vorträge anzeigen und verwalten",
     "statistics": "Statistiken",
-    "settings": "Einstellungen"
+    "settings": "Einstellungen",
+    "logout": "Abmelden",
+    "recentActivity": "Letzte Aktivitäten",
+    "noRecentActivity": "Keine aktuellen Aktivitäten anzuzeigen"
   },
   "footer": {
     "madeBy": "Entwickelt von"
