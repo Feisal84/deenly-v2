@@ -148,7 +148,24 @@
     "addLecture": "Vortrag hinzufügen",
     "noLectures": "Keine Vorträge verfügbar",
     "noLecturesDescription": "Sie haben noch keine Vorträge erstellt. Erstellen Sie Ihren ersten Vortrag, um zu beginnen.",
-    "createFirstLecture": "Ersten Vortrag erstellen"
+    "createFirstLecture": "Ersten Vortrag erstellen",
+    "createNewLecture": "Neuen Vortrag erstellen",
+    "lectureCreated": "Vortrag erfolgreich erstellt! Sie werden weitergeleitet...",
+    "title": "Titel",
+    "titlePlaceholder": "Geben Sie den Titel des Vortrags ein",
+    "type": "Typ",
+    "content": "Inhalt",
+    "contentPlaceholder": "Geben Sie den Inhalt des Vortrags ein...\n\nSie können auch arabischen Text verwenden.",
+    "contentHint": "Verwenden Sie Absätze für bessere Lesbarkeit. Arabischer Text wird automatisch richtig ausgerichtet.",
+    "status": "Status",
+    "draft": "Entwurf",
+    "public": "Öffentlich",
+    "draftHint": "Entwürfe sind nur für Sie sichtbar",
+    "publicHint": "Öffentliche Vorträge sind für alle sichtbar",
+    "saving": "Speichern...",
+    "saveDraft": "Als Entwurf speichern",
+    "publish": "Veröffentlichen",
+    "cancel": "Abbrechen"
   },
   "hero": {
     "badges": {

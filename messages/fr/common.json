@@ -20,17 +20,7 @@
       "ar": "Arabe"
     }
   },
-  "dashboard": {
-    "title": "Tableau de Bord",
-    "welcome": "Bienvenue",
-    "addLecture": "Ajouter une Nouvelle Conférence",
-    "addLectureDescription": "Créer un nouveau khutbah ou une conférence",
-    "createLecture": "Créer une Conférence",
-    "viewLectures": "Voir les Conférences",
-    "manageLectures": "Gérer les Conférences",
-    "statistics": "Statistiques",
-    "settings": "Paramètres"
-  },
+  "dashboard": "Tableau de Bord",
   "footer": {
     "madeBy": "Fait par"
   },
@@ -148,7 +138,24 @@
     "addLecture": "Ajouter une Conférence",
     "noLectures": "Aucune Conférence Disponible",
     "noLecturesDescription": "Vous n'avez pas encore créé de conférences. Créez votre première conférence pour commencer.",
-    "createFirstLecture": "Créer la Première Conférence"
+    "createFirstLecture": "Créer la Première Conférence",
+    "createNewLecture": "Créer une Nouvelle Conférence",
+    "lectureCreated": "Conférence créée avec succès! Vous allez être redirigé...",
+    "title": "Titre",
+    "titlePlaceholder": "Saisissez le titre de la conférence",
+    "type": "Type",
+    "content": "Contenu",
+    "contentPlaceholder": "Saisissez le contenu de la conférence...\n\nVous pouvez aussi utiliser du texte arabe.",
+    "contentHint": "Utilisez des paragraphes pour une meilleure lisibilité. Le texte arabe sera automatiquement aligné correctement.",
+    "status": "Statut",
+    "draft": "Brouillon",
+    "public": "Public",
+    "draftHint": "Les brouillons ne sont visibles que par vous",
+    "publicHint": "Les conférences publiques sont visibles par tous",
+    "saving": "Sauvegarde...",
+    "saveDraft": "Sauvegarder comme Brouillon",
+    "publish": "Publier",
+    "cancel": "Annuler"
   },
   "hero": {
     "badges": {

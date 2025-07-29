@@ -148,7 +148,24 @@
     "addLecture": "Konferans Ekle",
     "noLectures": "Mevcut Konferans Yok",
     "noLecturesDescription": "Henüz hiç konferans oluşturmadınız. Başlamak için ilk konferansınızı oluşturun.",
-    "createFirstLecture": "İlk Konferansı Oluştur"
+    "createFirstLecture": "İlk Konferansı Oluştur",
+    "createNewLecture": "Yeni Konferans Oluştur",
+    "lectureCreated": "Konferans başarıyla oluşturuldu! Yönlendiriliyorsunuz...",
+    "title": "Başlık",
+    "titlePlaceholder": "Konferans başlığını girin",
+    "type": "Tür",
+    "content": "İçerik",
+    "contentPlaceholder": "Konferans içeriğini girin...\n\nArapça metin de kullanabilirsiniz.",
+    "contentHint": "Daha iyi okunabilirlik için paragraflar kullanın. Arapça metin otomatik olarak doğru şekilde hizalanacaktır.",
+    "status": "Durum",
+    "draft": "Taslak",
+    "public": "Herkese Açık",
+    "draftHint": "Taslaklar sadece size görünür",
+    "publicHint": "Herkese açık konferanslar herkese görünür",
+    "saving": "Kaydediliyor...",
+    "saveDraft": "Taslak Olarak Kaydet",
+    "publish": "Yayınla",
+    "cancel": "İptal"
   },
   "hero": {
     "badges": {

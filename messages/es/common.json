@@ -148,7 +148,24 @@
     "addLecture": "Añadir Conferencia",
     "noLectures": "No hay Conferencias Disponibles",
     "noLecturesDescription": "Aún no has creado ninguna conferencia. Crea tu primera conferencia para comenzar.",
-    "createFirstLecture": "Crear Primera Conferencia"
+    "createFirstLecture": "Crear Primera Conferencia",
+    "createNewLecture": "Crear Nueva Conferencia",
+    "lectureCreated": "¡Conferencia creada exitosamente! Serás redirigido...",
+    "title": "Título",
+    "titlePlaceholder": "Ingresa el título de la conferencia",
+    "type": "Tipo",
+    "content": "Contenido",
+    "contentPlaceholder": "Ingresa el contenido de la conferencia...\n\nTambién puedes usar texto árabe.",
+    "contentHint": "Usa párrafos para mejor legibilidad. El texto árabe se alineará automáticamente de forma correcta.",
+    "status": "Estado",
+    "draft": "Borrador",
+    "public": "Público",
+    "draftHint": "Los borradores solo son visibles para ti",
+    "publicHint": "Las conferencias públicas son visibles para todos",
+    "saving": "Guardando...",
+    "saveDraft": "Guardar como Borrador",
+    "publish": "Publicar",
+    "cancel": "Cancelar"
   },
   "hero": {
     "badges": {

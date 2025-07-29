@@ -148,7 +148,24 @@
     "addLecture": "Add Lecture",
     "noLectures": "No Lectures Available",
     "noLecturesDescription": "You haven't created any lectures yet. Create your first lecture to get started.",
-    "createFirstLecture": "Create First Lecture"
+    "createFirstLecture": "Create First Lecture",
+    "createNewLecture": "Create New Lecture",
+    "lectureCreated": "Lecture created successfully! You will be redirected...",
+    "title": "Title",
+    "titlePlaceholder": "Enter the lecture title",
+    "type": "Type",
+    "content": "Content",
+    "contentPlaceholder": "Enter the lecture content...\n\nYou can also use Arabic text.",
+    "contentHint": "Use paragraphs for better readability. Arabic text will be automatically aligned correctly.",
+    "status": "Status",
+    "draft": "Draft",
+    "public": "Public",
+    "draftHint": "Drafts are only visible to you",
+    "publicHint": "Public lectures are visible to everyone",
+    "saving": "Saving...",
+    "saveDraft": "Save as Draft",
+    "publish": "Publish",
+    "cancel": "Cancel"
   },
   "hero": {
     "badges": {
