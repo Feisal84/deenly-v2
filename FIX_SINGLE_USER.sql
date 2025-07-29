@@ -1,4 +1,9 @@
--- Quick fix for a specific user
+-- Quick fix for a sVALUES (
+    'kingfaisal840@gmail.com',           -- Your email
+    'Feisal Ibrahim',                    -- Your full name (required field)
+    'Imam',                              -- Your role: 'Imam' or 'Admin' (only valid enum values)
+    (SELECT id FROM mosques LIMIT 1),    -- This gets the first mosque UUID automatically
+    '3aae3e17-2c8c-48b1-a305-32bbafbf548a',  -- Auth user ID from step 2c user
 -- Use this if you know the exact email that's having login issues
 
 -- Step 1: Check which mosques are available

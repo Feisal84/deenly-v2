@@ -53,7 +53,6 @@ GROUP BY role
 ORDER BY 
     CASE role 
         WHEN 'Admin' THEN 1 
-        WHEN 'Imam' THEN 2 
-        WHEN 'User' THEN 3 
-        ELSE 4 
+        WHEN 'Imam' THEN 2
+        ELSE 3 
     END;

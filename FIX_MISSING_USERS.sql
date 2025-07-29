@@ -11,14 +11,14 @@ FROM mosques
 ORDER BY id;
 
 -- Create users for all missing connections
--- We'll assign them all to the first available mosque initially and role = 'User'
--- You can update specific users to 'Imam' or 'Admin' later
+-- We'll assign them all to the first available mosque initially and role = 'Imam'
+-- You can update specific users to 'Admin' as needed later
 
 INSERT INTO users (email, full_name, role, mosque_id, auth_user_id, created_at, updated_at)
 SELECT 
     au.email,
     COALESCE(au.raw_user_meta_data->>'full_name', SPLIT_PART(au.email, '@', 1)) as full_name,  -- Use metadata or email prefix
-    'User' as role,  -- Default role, change to 'Imam' or 'Admin' as needed
+    'Imam' as role,  -- Default role (only 'Admin' and 'Imam' are valid)
     (SELECT id FROM mosques LIMIT 1) as mosque_id,  -- Assign to first mosque
     au.id as auth_user_id,
     NOW() as created_at,

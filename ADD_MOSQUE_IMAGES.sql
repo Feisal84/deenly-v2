@@ -9,19 +9,24 @@ UPDATE mosques
 SET hero_path = '/images/mosques/bilal-moschee.jpg'
 WHERE handle = 'bilal-moschee-bielefeld';
 
--- For DITIB and other mosques, let's use the mosque-features image temporarily
--- You can replace these with specific mosque images later
+-- Update DITIB mosque with its specific image
 UPDATE mosques 
-SET hero_path = '/images/features/mosque-features.webp'
+SET hero_path = '/images/mosques/ditib-moschee.webp'
 WHERE handle = 'ditib-moschee-lage';
 
+-- For other mosques, use available generic mosque images
 UPDATE mosques 
-SET hero_path = '/images/features/mosque-features.webp'
+SET hero_path = '/images/mosques/moschee2.webp'
 WHERE handle = 'sokut-icmg-baesweiler';
 
 UPDATE mosques 
-SET hero_path = '/images/features/mosque-features.webp'
+SET hero_path = '/images/mosques/moschee3.webp'
 WHERE handle = 'spenge-moschee';
+
+-- Add a default image for any mosques without images
+UPDATE mosques 
+SET hero_path = '/images/mosques/moschee-default.webp'
+WHERE hero_path IS NULL;
 
 -- Verify the updates
 SELECT 
