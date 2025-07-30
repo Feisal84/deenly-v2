@@ -14,10 +14,9 @@ const SUPPORTED_LANGUAGES = {
 };
 
 /**
- * Translates text using OpenAI API
- * Note: You'll need to add OPENAI_API_KEY to your environment variables
+ * Translates text using OpenAI API with retry logic for rate limits
  */
-async function translateWithAI(text: string, targetLanguage: string, sourceLanguage: string = 'en'): Promise<string> {
+async function translateWithAI(text: string, targetLanguage: string, sourceLanguage: string = 'en', retries: number = 3): Promise<string> {
   try {
     // Check if OpenAI API key is available
     const apiKey = process.env.OPENAI_API_KEY;
@@ -56,6 +55,12 @@ async function translateWithAI(text: string, targetLanguage: string, sourceLangu
     });
 
     if (!response.ok) {
+      // If rate limited and we have retries left, wait and retry
+      if (response.status === 429 && retries > 0) {
+        console.log(`Rate limited, retrying in 5 seconds... (${retries} retries left)`);
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        return translateWithAI(text, targetLanguage, sourceLanguage, retries - 1);
+      }
       throw new Error(`OpenAI API error: ${response.status}`);
     }
 
@@ -94,8 +99,8 @@ export async function translateKhutbah(title: string, content: string, sourceLan
         content: translatedContent
       };
       
-      // Add small delay to avoid rate limiting
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Add longer delay to avoid rate limiting (3 seconds)
+      await new Promise(resolve => setTimeout(resolve, 3000));
       
     } catch (error) {
       console.error(`Failed to translate to ${lang}:`, error);
