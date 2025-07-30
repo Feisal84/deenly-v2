@@ -10,7 +10,16 @@ const SUPPORTED_LANGUAGES = {
   'ar': 'Arabic',
   'fr': 'French',
   'es': 'Spanish',
-  'ru': 'Russian'
+  'ru': 'Russian',
+  'it': 'Italian'
+};
+
+// Essential languages for translation (to reduce API calls and rate limiting)
+const ESSENTIAL_LANGUAGES = {
+  'de': 'German',
+  'tr': 'Turkish', 
+  'ar': 'Arabic',
+  'it': 'Italian'
 };
 
 /**
@@ -55,10 +64,15 @@ async function translateWithAI(text: string, targetLanguage: string, sourceLangu
     });
 
     if (!response.ok) {
-      // If rate limited and we have retries left, wait and retry
+      // If rate limited and we have retries left, wait and retry with exponential backoff
       if (response.status === 429 && retries > 0) {
-        console.log(`Rate limited, retrying in 5 seconds... (${retries} retries left)`);
-        await new Promise(resolve => setTimeout(resolve, 5000));
+        const baseDelay = 10000; // Start with 10 seconds
+        const exponentialDelay = baseDelay * Math.pow(2, 3 - retries); // Exponential backoff
+        const jitter = Math.random() * 2000; // Add jitter to avoid thundering herd
+        const totalDelay = exponentialDelay + jitter;
+        
+        console.log(`Rate limited, retrying in ${Math.round(totalDelay/1000)} seconds... (${retries} retries left)`);
+        await new Promise(resolve => setTimeout(resolve, totalDelay));
         return translateWithAI(text, targetLanguage, sourceLanguage, retries - 1);
       }
       throw new Error(`OpenAI API error: ${response.status}`);
@@ -76,20 +90,24 @@ async function translateWithAI(text: string, targetLanguage: string, sourceLangu
 /**
  * Translates khutbah content into multiple languages using AI
  */
-export async function translateKhutbah(title: string, content: string, sourceLanguage: string = 'en') {
+export async function translateKhutbah(title: string, content: string, sourceLanguage: string = 'en', useEssentialOnly: boolean = false) {
   const translations: Record<string, any> = {};
   
-  // Languages to translate to (excluding source language)
-  const targetLanguages = Object.keys(SUPPORTED_LANGUAGES).filter(lang => lang !== sourceLanguage);
+  // Languages to translate to (use essential languages if specified to reduce API calls)
+  const languageSet = useEssentialOnly ? ESSENTIAL_LANGUAGES : SUPPORTED_LANGUAGES;
+  const targetLanguages = Object.keys(languageSet).filter(lang => lang !== sourceLanguage);
   
-  console.log(`Starting AI translation for khutbah: ${title}`);
+  console.log(`Starting AI translation for khutbah: ${title} (${useEssentialOnly ? 'essential languages only' : 'all languages'})`);
   
   for (const lang of targetLanguages) {
     try {
-      console.log(`Translating to ${SUPPORTED_LANGUAGES[lang as keyof typeof SUPPORTED_LANGUAGES]}...`);
+      console.log(`Translating to ${languageSet[lang as keyof typeof languageSet]}...`);
       
       // Translate title
       const translatedTitle = await translateWithAI(title, lang, sourceLanguage);
+      
+      // Small delay between title and content translation
+      await new Promise(resolve => setTimeout(resolve, 2000));
       
       // Translate content (split into chunks if too long)
       const translatedContent = await translateWithAI(content, lang, sourceLanguage);
@@ -99,8 +117,8 @@ export async function translateKhutbah(title: string, content: string, sourceLan
         content: translatedContent
       };
       
-      // Add longer delay to avoid rate limiting (3 seconds)
-      await new Promise(resolve => setTimeout(resolve, 3000));
+      // Add longer delay to avoid rate limiting (8 seconds between translations)
+      await new Promise(resolve => setTimeout(resolve, 8000));
       
     } catch (error) {
       console.error(`Failed to translate to ${lang}:`, error);
@@ -234,15 +252,39 @@ export async function createLecture(lectureData: {
     // Generate AI translations if enabled
     if (lectureData.enableAITranslation) {
       console.log("Generating AI translations for khutbah...");
-      const aiTranslations = await translateKhutbah(lectureData.title, lectureData.content);
       
-      // Build title translations
-      Object.keys(aiTranslations).forEach(lang => {
-        titleTranslations[lang as keyof typeof titleTranslations] = aiTranslations[lang].title;
-      });
-      
-      // Build content translations map
-      translationMap = aiTranslations;
+      try {
+        // Try with all languages first
+        const aiTranslations = await translateKhutbah(lectureData.title, lectureData.content);
+        
+        // Build title translations
+        Object.keys(aiTranslations).forEach(lang => {
+          titleTranslations[lang as keyof typeof titleTranslations] = aiTranslations[lang].title;
+        });
+        
+        // Build content translations map
+        translationMap = aiTranslations;
+        
+      } catch (error) {
+        console.warn("Failed with all languages, falling back to essential languages only:", error);
+        
+        try {
+          // Fallback: Use essential languages only to reduce API calls
+          const aiTranslations = await translateKhutbah(lectureData.title, lectureData.content, 'en', true);
+          
+          // Build title translations
+          Object.keys(aiTranslations).forEach(lang => {
+            titleTranslations[lang as keyof typeof titleTranslations] = aiTranslations[lang].title;
+          });
+          
+          // Build content translations map
+          translationMap = aiTranslations;
+          
+        } catch (fallbackError) {
+          console.error("Translation failed even with essential languages:", fallbackError);
+          // Continue without translations
+        }
+      }
     }
 
     const { data, error } = await supabase
