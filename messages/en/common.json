@@ -158,6 +158,10 @@
     "title": "Title",
     "titlePlaceholder": "Enter the lecture title",
     "type": "Type",
+    "created": "Created",
+    "view": "View",
+    "edit": "Edit",
+    "delete": "Delete",
     "content": "Content",
     "contentPlaceholder": "Enter the lecture content...\n\nYou can also use Arabic text.",
     "contentHint": "Use paragraphs for better readability. Arabic text will be automatically aligned correctly.",
@@ -169,7 +173,9 @@
     "saving": "Saving...",
     "saveDraft": "Save as Draft",
     "publish": "Publish",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "enableAITranslation": "Enable AI Translation",
+    "aiTranslationHint": "Automatic translation into 7 languages (German, English, Turkish, Arabic, French, Spanish, Russian)"
   },
   "hero": {
     "badges": {

@@ -158,6 +158,10 @@
     "title": "Titel",
     "titlePlaceholder": "Geben Sie den Titel des Vortrags ein",
     "type": "Typ",
+    "created": "Erstellt",
+    "view": "Ansehen",
+    "edit": "Bearbeiten",
+    "delete": "Löschen",
     "content": "Inhalt",
     "contentPlaceholder": "Geben Sie den Inhalt des Vortrags ein...\n\nSie können auch arabischen Text verwenden.",
     "contentHint": "Verwenden Sie Absätze für bessere Lesbarkeit. Arabischer Text wird automatisch richtig ausgerichtet.",
@@ -169,7 +173,9 @@
     "saving": "Speichern...",
     "saveDraft": "Als Entwurf speichern",
     "publish": "Veröffentlichen",
-    "cancel": "Abbrechen"
+    "cancel": "Abbrechen",
+    "enableAITranslation": "KI-Übersetzung aktivieren",
+    "aiTranslationHint": "Automatische Übersetzung in 7 Sprachen (Deutsch, Englisch, Türkisch, Arabisch, Französisch, Spanisch, Russisch)"
   },
   "hero": {
     "badges": {

@@ -159,6 +159,10 @@
     "title": "Título",
     "titlePlaceholder": "Ingresa el título de la conferencia",
     "type": "Tipo",
+    "created": "Creado",
+    "view": "Ver",
+    "edit": "Editar",
+    "delete": "Eliminar",
     "content": "Contenido",
     "contentPlaceholder": "Ingresa el contenido de la conferencia...\n\nTambién puedes usar texto árabe.",
     "contentHint": "Usa párrafos para mejor legibilidad. El texto árabe se alineará automáticamente de forma correcta.",
@@ -170,7 +174,9 @@
     "saving": "Guardando...",
     "saveDraft": "Guardar como Borrador",
     "publish": "Publicar",
-    "cancel": "Cancelar"
+    "cancel": "Cancelar",
+    "enableAITranslation": "Habilitar Traducción IA",
+    "aiTranslationHint": "Traducción automática a 7 idiomas (Alemán, Inglés, Turco, Árabe, Francés, Español, Ruso)"
   },
   "hero": {
     "badges": {

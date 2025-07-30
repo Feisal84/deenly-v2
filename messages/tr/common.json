@@ -159,6 +159,10 @@
     "title": "Başlık",
     "titlePlaceholder": "Konferans başlığını girin",
     "type": "Tür",
+    "created": "Oluşturuldu",
+    "view": "Görüntüle",
+    "edit": "Düzenle",
+    "delete": "Sil",
     "content": "İçerik",
     "contentPlaceholder": "Konferans içeriğini girin...\n\nArapça metin de kullanabilirsiniz.",
     "contentHint": "Daha iyi okunabilirlik için paragraflar kullanın. Arapça metin otomatik olarak doğru şekilde hizalanacaktır.",
@@ -170,7 +174,9 @@
     "saving": "Kaydediliyor...",
     "saveDraft": "Taslak Olarak Kaydet",
     "publish": "Yayınla",
-    "cancel": "İptal"
+    "cancel": "İptal",
+    "enableAITranslation": "AI Çeviri Etkinleştir",
+    "aiTranslationHint": "7 dilde otomatik çeviri (Almanca, İngilizce, Türkçe, Arapça, Fransızca, İspanyolca, Rusça)"
   },
   "hero": {
     "badges": {
