@@ -6,6 +6,7 @@ import { createClient } from '@/utils/supabase/client';
 import { useLocale, useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { createLecture } from '@/app/actions';
 
 interface User {
   id: string;
@@ -22,6 +23,7 @@ export default function NewLecturePage() {
   const [content, setContent] = useState('');
   const [type, setType] = useState('Khutba');
   const [status, setStatus] = useState<'Draft' | 'Public'>('Draft');
+  const [enableAITranslation, setEnableAITranslation] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
   
@@ -66,36 +68,29 @@ export default function NewLecturePage() {
     setError(null);
 
     try {
-      const { data, error } = await supabase
-        .from('lectures')
-        .insert({
-          title,
-          content,
-          type,
-          status,
-          mosque_id: user.mosque_id,
-          created_by: user.id,
-          num_views: 0,
-          title_translations: { orig: title },
-          translation_map: {}
-        })
-        .select()
-        .single();
+      const result = await createLecture({
+        title,
+        content,
+        type,
+        status,
+        mosque_id: user.mosque_id,
+        created_by: user.id,
+        enableAITranslation
+      });
 
-      if (error) {
-        setError(`Fehler beim Speichern: ${error.message}`);
-        return;
+      if (result.success) {
+        setSuccess(true);
+        
+        // Redirect after successful creation
+        setTimeout(() => {
+          router.push(`/${locale}/dashboard/lectures`);
+        }, 2000);
+      } else {
+        setError('Fehler beim Speichern des Vortrags');
       }
 
-      setSuccess(true);
-      
-      // Redirect after successful creation
-      setTimeout(() => {
-        router.push(`/${locale}/dashboard/lectures`);
-      }, 2000);
-
-    } catch (err) {
-      setError('Ein unerwarteter Fehler ist aufgetreten');
+    } catch (err: any) {
+      setError(`Fehler beim Speichern: ${err.message || 'Ein unerwarteter Fehler ist aufgetreten'}`);
     } finally {
       setSaving(false);
     }
@@ -215,6 +210,26 @@ export default function NewLecturePage() {
                   : t('publicHint', { defaultValue: 'Öffentliche Vorträge sind für alle sichtbar' })
                 }
               </p>
+            </div>
+
+            {/* AI Translation */}
+            <div>
+              <label className="flex items-center space-x-3">
+                <input
+                  type="checkbox"
+                  checked={enableAITranslation}
+                  onChange={(e) => setEnableAITranslation(e.target.checked)}
+                  className="w-4 h-4 text-primary border-2 rounded focus:ring-primary"
+                />
+                <div>
+                  <span className="text-sm font-medium">
+                    {t('enableAITranslation', { defaultValue: 'KI-Übersetzung aktivieren' })}
+                  </span>
+                  <p className="text-xs text-muted-foreground">
+                    {t('aiTranslationHint', { defaultValue: 'Automatische Übersetzung in 7 Sprachen (Deutsch, Englisch, Türkisch, Arabisch, Französisch, Spanisch, Russisch)' })}
+                  </p>
+                </div>
+              </label>
             </div>
 
             {/* Error Message */}
