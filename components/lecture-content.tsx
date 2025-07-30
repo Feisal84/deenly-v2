@@ -1,9 +1,9 @@
 'use client';
 
 import { Lecture, formatDate } from "@/lib/types";
-import { useEffect, useState } from "react";
-import Link from "next/link";
 import { useTranslations } from "next-intl";
+import Link from "next/link";
+import { useState } from "react";
 
 interface LectureContentProps {
   lecture: Lecture;
@@ -23,21 +23,31 @@ export default function LectureContent({ lecture, mosqueName, locale, handle }: 
 
   // Hilfsfunktion zum Abrufen des lokalisierten Titels
   const getLocalizedTitle = () => {
-    if (!lecture.title_translations) return lecture.title;
-    
-    const translations = lecture.title_translations as Record<string, string>;
-    
-    // Check if we have a translation for the current locale
-    if (translations[locale]) {
-      return translations[locale];
+    try {
+      if (!lecture.title_translations) return lecture.title;
+      
+      const translations = lecture.title_translations as Record<string, string>;
+      
+      // Safely check if translations is an object
+      if (!translations || typeof translations !== 'object') {
+        return lecture.title;
+      }
+      
+      // Check if we have a translation for the current locale
+      if (translations[locale]) {
+        return translations[locale];
+      }
+      
+      // Fallback to original title
+      if (translations["orig"]) {
+        return translations["orig"];
+      }
+      
+      return lecture.title;
+    } catch (error) {
+      console.error('Error getting localized title:', error);
+      return lecture.title;
     }
-    
-    // Fallback to original title
-    if (translations["orig"]) {
-      return translations["orig"];
-    }
-    
-    return lecture.title;
   };
 
   // Hilfsfunktion zur Überprüfung, ob Übersetzungen verfügbar sind
@@ -62,22 +72,32 @@ export default function LectureContent({ lecture, mosqueName, locale, handle }: 
 
   // Funktion zum Erstellen des übersetzten Fließtextes in der aktuellen Sprache
   const getTranslationText = () => {
-    if (!hasTranslations()) return null;
+    try {
+      if (!hasTranslations()) return null;
 
-    const translationMap = lecture.translation_map as Record<string, any>;
-    
-    // New structure: { "en": { title: "...", content: "..." }, "de": { ... }, ... }
-    if (translationMap[locale] && translationMap[locale].content) {
-      return translationMap[locale].content;
+      const translationMap = lecture.translation_map as Record<string, any>;
+      
+      // Safely check if translationMap is an object
+      if (!translationMap || typeof translationMap !== 'object') {
+        return null;
+      }
+      
+      // New structure: { "en": { title: "...", content: "..." }, "de": { ... }, ... }
+      if (translationMap[locale] && typeof translationMap[locale] === 'object' && translationMap[locale].content) {
+        return translationMap[locale].content;
+      }
+      
+      // Fallback to original content if no translation for current locale
+      if (translationMap['orig'] && typeof translationMap['orig'] === 'object' && translationMap['orig'].content) {
+        return translationMap['orig'].content;
+      }
+      
+      // If no structured translations, return null to show original
+      return null;
+    } catch (error) {
+      console.error('Error getting translation text:', error);
+      return null;
     }
-    
-    // Fallback to original content if no translation for current locale
-    if (translationMap['orig'] && translationMap['orig'].content) {
-      return translationMap['orig'].content;
-    }
-    
-    // If no structured translations, return null to show original
-    return null;
   };
 
   // Der übersetzte Inhalt als Fließtext
