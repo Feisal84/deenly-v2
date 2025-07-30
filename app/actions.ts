@@ -243,7 +243,12 @@ export async function createLecture(lectureData: {
     const { data, error } = await supabase
       .from("lectures")
       .insert({
-        ...lectureData,
+        title: lectureData.title,
+        content: lectureData.content,
+        type: lectureData.type,
+        status: lectureData.status,
+        mosque_id: lectureData.mosque_id,
+        created_by: lectureData.created_by,
         num_views: 0,
         title_translations: titleTranslations,
         translation_map: translationMap
