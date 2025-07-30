@@ -17,7 +17,8 @@
       "fr": "Fransızca",
       "tr": "Türkçe",
       "ru": "Rusça",
-      "ar": "Arapça"
+      "ar": "Arapça",
+      "it": "İtalyanca"
     }
   },
   "dashboard": {
@@ -176,7 +177,7 @@
     "publish": "Yayınla",
     "cancel": "İptal",
     "enableAITranslation": "AI Çeviri Etkinleştir",
-    "aiTranslationHint": "7 dilde otomatik çeviri (Almanca, İngilizce, Türkçe, Arapça, Fransızca, İspanyolca, Rusça)"
+    "aiTranslationHint": "7 dilde otomatik çeviri (Almanca, İngilizce, Arapça, Fransızca, İspanyolca, Rusça, İtalyanca)"
   },
   "hero": {
     "badges": {

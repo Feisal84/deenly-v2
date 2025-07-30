@@ -1,0 +1,228 @@
+{
+  "navigation": {
+    "home": "Home",
+    "mosques": "Moschee",
+    "search-placeholder": "Cerca moschee per nome, via o città",
+    "name": "Nome",
+    "address": "Indirizzo",
+    "route": "Percorso",
+    "found": "trovato",
+    "loading-mosques": "Caricamento moschee...",
+    "no-mosques-found": "Nessuna moschea trovata",
+    "download-app": "Scarica App",
+    "languages": {
+      "de": "Tedesco",
+      "en": "Inglese",
+      "es": "Spagnolo",
+      "fr": "Francese",
+      "tr": "Turco",
+      "ru": "Russo",
+      "ar": "Arabo",
+      "it": "Italiano"
+    }
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Benvenuto",
+    "addLecture": "Aggiungi Nuova Lezione",
+    "addLectureDescription": "Crea una nuova khutbah o lezione",
+    "createLecture": "Crea Lezione",
+    "viewLectures": "Visualizza Lezioni",
+    "manageLectures": "Gestisci Lezioni",
+    "manageLecturesDescription": "Visualizza e gestisci tutte le tue lezioni",
+    "statistics": "Statistiche",
+    "settings": "Impostazioni",
+    "logout": "Logout",
+    "recentActivity": "Attività Recente",
+    "noRecentActivity": "Nessuna attività recente da visualizzare"
+  },
+  "footer": {
+    "madeBy": "Creato da"
+  },
+  "theme": {
+    "light": "Chiaro",
+    "dark": "Scuro"
+  },
+  "app": {
+    "title": "Connettiti con la tua Comunità della Moschea",
+    "description": "Ottieni informazioni aggiornate e traduzioni LIVE di Khutba dalla tua moschea",
+    "badge": "L'App per la Comunità Musulmana",
+    "ctaButton": "Esplora Moschee",
+    "downloadButton": "Scarica App",
+    "forMosquesButton": "Per le Moschee",
+    "forUsersButton": "Per i Visitatori",
+    "features": {
+      "title": "Cosa Offre Deenly",
+      "khutba": {
+        "title": "Sermoni del Venerdì",
+        "description": "Non perdere mai più un sermone del venerdì e condividilo con altri"
+      },
+      "mosque": {
+        "title": "Funzionalità per le Moschee",
+        "description": "ImamGPT per khutba e presenza web automatica per la tua moschea"
+      },
+      "prayer": {
+        "title": "Orari delle Preghiere",
+        "description": "Orari precisi delle preghiere per la tua moschea locale a colpo d'occhio"
+      }
+    },
+    "stats": {
+      "title": "Deenly in Numeri",
+      "mosques": "Moschee",
+      "khutbas": "Khutba",
+      "views": "Visualizzazioni Totali"
+    },
+    "forMosques": {
+      "title": "Per le Moschee",
+      "description": "Raggiungi la tua comunità meglio e più facilmente",
+      "benefits": {
+        "item1": "Presenza digitale per la tua moschea",
+        "item2": "Condivisione facile dei sermoni del venerdì",
+        "item3": "Calcolo automatico degli orari delle preghiere",
+        "item4": "Comunicazione degli eventi"
+      }
+    },
+    "forUsers": {
+      "title": "Per i Visitatori",
+      "description": "Scopri e segui le attività della moschea",
+      "benefits": {
+        "item1": "Trova moschee vicino a te",
+        "item2": "Orari delle preghiere sempre a portata di mano",
+        "item3": "Ascolta e leggi i sermoni del venerdì",
+        "item4": "Rimani informato sui prossimi eventi"
+      }
+    },
+    "cta": {
+      "title": "Fai Parte della Comunità Deenly",
+      "description": "Scopri moschee e connettiti con la comunità musulmana",
+      "forMosques": {
+        "title": "Per le Moschee",
+        "description": "Rappresenti una moschea e vuoi usare Deenly gratuitamente al 100%? Contattaci per saperne di più.",
+        "contactButton": "Contattaci"
+      }
+    }
+  },
+  "mosque": {
+    "noImage": "Nessuna immagine disponibile",
+    "phone": "Telefono",
+    "email": "Email",
+    "website": "Sito Web",
+    "fridayPrayer": "Preghiera del Venerdì",
+    "hour": "ore",
+    "noDescription": "Nessuna descrizione disponibile",
+    "announcement": "Annuncio",
+    "latestKhutbas": "Ultime Khutba",
+    "mosqueNavLink": "Scopri Moschee",
+    "prayerTimes": "Orari delle Preghiere",
+    "noPrayerTimes": "Gli orari automatici delle preghiere non possono essere calcolati per questa moschea poiché non sono disponibili coordinate.",
+    "calculationMethod": "Metodo di Calcolo",
+    "standard": "Standard",
+    "noKhutbas": "Nessuna khutba disponibile",
+    "mosque": "Moschea"
+  },
+  "prayerTimes": {
+    "todayTimes": "Orari delle Preghiere di Oggi",
+    "noCalculation": "Gli orari delle preghiere non possono essere calcolati per questa moschea.",
+    "asOf": "Data"
+  },
+  "errors": {
+    "loadingMosqueError": "Errore nel caricamento della moschea",
+    "loadingDataError": "Errore nel caricamento dei dati",
+    "khutbaTableError": "La tabella khutba potrebbe non esistere",
+    "loadingMoreKhutbas": "Errore nel caricamento di più khutba"
+  },
+  "actions": {
+    "loadMore": "Carica altro",
+    "loading": "Caricamento...",
+    "readMore": "Leggi di più"
+  },
+  "lecture": {
+    "mosque": "Moschea",
+    "date": "Data",
+    "views": "Visualizzazioni",
+    "translation": "Traduzione",
+    "original": "Originale",
+    "fontSize": "Dimensione carattere",
+    "decreaseFontSize": "Diminuisci dimensione carattere",
+    "increaseFontSize": "Aumenta dimensione carattere",
+    "resetFontSize": "Ripristina dimensione carattere",
+    "decreaseFontSizeSymbol": "A-",
+    "increaseFontSizeSymbol": "A+",
+    "backToDashboard": "Torna al Dashboard",
+    "manageLectures": "Gestisci Lezioni",
+    "addLecture": "Aggiungi Lezione",
+    "noLectures": "Nessuna Lezione Disponibile",
+    "noLecturesDescription": "Non hai ancora creato alcuna lezione. Crea la tua prima lezione per iniziare.",
+    "createFirstLecture": "Crea Prima Lezione",
+    "createNewLecture": "Crea Nuova Lezione",
+    "lectureCreated": "Lezione creata con successo! Sarai reindirizzato...",
+    "title": "Titolo",
+    "titlePlaceholder": "Inserisci il titolo della lezione",
+    "type": "Tipo",
+    "created": "Creato",
+    "view": "Visualizza",
+    "edit": "Modifica",
+    "delete": "Elimina",
+    "content": "Contenuto",
+    "contentPlaceholder": "Inserisci il contenuto della lezione...\n\nPuoi anche usare testo arabo.",
+    "contentHint": "Usa paragrafi per una migliore leggibilità. Il testo arabo sarà automaticamente allineato correttamente.",
+    "status": "Stato",
+    "draft": "Bozza",
+    "public": "Pubblico",
+    "draftHint": "Le bozze sono visibili solo a te",
+    "publicHint": "Le lezioni pubbliche sono visibili a tutti",
+    "saving": "Salvataggio...",
+    "saveDraft": "Salva come Bozza",
+    "publish": "Pubblica",
+    "cancel": "Annulla",
+    "enableAITranslation": "Abilita Traduzione AI",
+    "aiTranslationHint": "Traduzione automatica in 7 lingue (Tedesco, Turco, Arabo, Francese, Spagnolo, Russo, Italiano)"
+  },
+  "hero": {
+    "badges": {
+      "fridaySermons": "Sermoni del Venerdì",
+      "mosqueSearch": "Ricerca Moschee",
+      "prayerTimes": "Orari delle Preghiere",
+      "imamGPT": "ImamGPT"
+    },
+    "altText": "Showcase App Deenly"
+  },
+  "featuresSection": {
+    "tabs": {
+      "ummah": "Funzionalità per i Visitatori",
+      "mosque": "Funzionalità per le Moschee"
+    },
+    "ummah": {
+      "khutba": {
+        "title": "Khutba su Richiesta",
+        "description": "Khutba su richiesta e tradotta in 7 lingue"
+      },
+      "prayerTimes": {
+        "title": "Orari delle Preghiere Attuali",
+        "description": "Orari aggiornati delle preghiere per la tua moschea"
+      },
+      "mosqueInfo": {
+        "title": "Informazioni sulla Moschea",
+        "description": "Informazioni attuali sulla tua moschea"
+      }
+    },
+    "mosque": {
+      "translation": {
+        "title": "Traduzione Automatica",
+        "description": "Traduzione automatica delle khutba in 7 lingue"
+      },
+      "webPresence": {
+        "title": "Presenza Web Semplice",
+        "description": "Presenza web automatica facilmente gestita tramite l'app (non serve conoscenza tecnica)"
+      },
+      "management": {
+        "title": "Strumenti di Gestione",
+        "description": "Gestione orari delle preghiere e altri strumenti utili"
+      }
+    },
+    "altText": {
+      "ummah": "Illustrazione per Funzionalità Visitatori",
+      "mosque": "Illustrazione per Funzionalità Moschee"
+    }
+  }
+}

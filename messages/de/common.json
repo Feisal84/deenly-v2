@@ -17,7 +17,8 @@
       "fr": "Französisch",
       "tr": "Türkisch",
       "ru": "Russisch",
-      "ar": "Arabisch"
+      "ar": "Arabisch",
+      "it": "Italienisch"
     }
   },
   "dashboard": {
@@ -175,7 +176,7 @@
     "publish": "Veröffentlichen",
     "cancel": "Abbrechen",
     "enableAITranslation": "KI-Übersetzung aktivieren",
-    "aiTranslationHint": "Automatische Übersetzung in 7 Sprachen (Deutsch, Englisch, Türkisch, Arabisch, Französisch, Spanisch, Russisch)"
+    "aiTranslationHint": "Automatische Übersetzung in 7 Sprachen (Türkisch, Arabisch, Französisch, Spanisch, Russisch, Italienisch, Englisch)"
   },
   "hero": {
     "badges": {
