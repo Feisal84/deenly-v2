@@ -1,12 +1,12 @@
 'use client';
 
+import { createLecture } from '@/app/actions';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { createClient } from '@/utils/supabase/client';
 import { useLocale, useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { createLecture } from '@/app/actions';
 
 interface User {
   id: string;

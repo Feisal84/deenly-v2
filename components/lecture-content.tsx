@@ -27,10 +27,12 @@ export default function LectureContent({ lecture, mosqueName, locale, handle }: 
     
     const translations = lecture.title_translations as Record<string, string>;
     
+    // Check if we have a translation for the current locale
     if (translations[locale]) {
       return translations[locale];
     }
     
+    // Fallback to original title
     if (translations["orig"]) {
       return translations["orig"];
     }
@@ -62,27 +64,20 @@ export default function LectureContent({ lecture, mosqueName, locale, handle }: 
   const getTranslationText = () => {
     if (!hasTranslations()) return null;
 
-    const translationMap = lecture.translation_map as Record<string, Record<string, string>>;
-    const keys = Object.keys(translationMap).sort((a, b) => parseInt(a) - parseInt(b));
+    const translationMap = lecture.translation_map as Record<string, any>;
     
-    // Prüfen, ob die aktuelle Sprache in den Übersetzungen existiert
-    const hasCurrentLocale = keys.some(key => 
-      translationMap[key] && translationMap[key][locale]
-    );
-    
-    // Wenn aktuelle Sprache nicht existiert, versuche "orig" als Fallback
-    const targetLocale = hasCurrentLocale ? locale : 'orig';
-    
-    // Zusammenführen aller Textabschnitte
-    let result = '';
-    for (const key of keys) {
-      if (translationMap[key] && translationMap[key][targetLocale]) {
-        if (result) result += ' ';
-        result += translationMap[key][targetLocale];
-      }
+    // New structure: { "en": { title: "...", content: "..." }, "de": { ... }, ... }
+    if (translationMap[locale] && translationMap[locale].content) {
+      return translationMap[locale].content;
     }
     
-    return result || null;
+    // Fallback to original content if no translation for current locale
+    if (translationMap['orig'] && translationMap['orig'].content) {
+      return translationMap['orig'].content;
+    }
+    
+    // If no structured translations, return null to show original
+    return null;
   };
 
   // Der übersetzte Inhalt als Fließtext

@@ -4,7 +4,8 @@
 -- Drop the existing restrictive policy
 DROP POLICY IF EXISTS "Mosque members can create lectures" ON lectures;
 
--- Create a more permissive policy for authenticated users
+-- Create or replace policy for authenticated users to create lectures
+DROP POLICY IF EXISTS "Authenticated users can create lectures" ON lectures;
 CREATE POLICY "Authenticated users can create lectures" ON lectures
 FOR INSERT WITH CHECK (
   auth.role() = 'authenticated'
@@ -22,6 +23,7 @@ FOR UPDATE USING (
 
 -- Drop existing delete policy
 DROP POLICY IF EXISTS "Authors can delete their lectures" ON lectures;
+DROP POLICY IF EXISTS "Authenticated users can delete lectures" ON lectures;
 
 -- Create simplified delete policy for authenticated users
 CREATE POLICY "Authenticated users can delete lectures" ON lectures
