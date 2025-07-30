@@ -23,9 +23,9 @@ const ESSENTIAL_LANGUAGES = {
 };
 
 /**
- * Translates text using OpenAI API with retry logic for rate limits
+ * Translates text using OpenAI API with aggressive retry logic for severe rate limits
  */
-async function translateWithAI(text: string, targetLanguage: string, sourceLanguage: string = 'en', retries: number = 3): Promise<string> {
+async function translateWithAI(text: string, targetLanguage: string, sourceLanguage: string = 'en', retries: number = 5): Promise<string> {
   try {
     // Check if OpenAI API key is available
     const apiKey = process.env.OPENAI_API_KEY;
@@ -64,11 +64,11 @@ async function translateWithAI(text: string, targetLanguage: string, sourceLangu
     });
 
     if (!response.ok) {
-      // If rate limited and we have retries left, wait and retry with exponential backoff
+      // If rate limited and we have retries left, wait and retry with aggressive exponential backoff
       if (response.status === 429 && retries > 0) {
-        const baseDelay = 10000; // Start with 10 seconds
-        const exponentialDelay = baseDelay * Math.pow(2, 3 - retries); // Exponential backoff
-        const jitter = Math.random() * 2000; // Add jitter to avoid thundering herd
+        const baseDelay = 30000; // Start with 30 seconds base delay
+        const exponentialDelay = baseDelay * Math.pow(2, 5 - retries); // More aggressive backoff
+        const jitter = Math.random() * 5000; // More jitter (0-5 seconds)
         const totalDelay = exponentialDelay + jitter;
         
         console.log(`Rate limited, retrying in ${Math.round(totalDelay/1000)} seconds... (${retries} retries left)`);
@@ -106,8 +106,8 @@ export async function translateKhutbah(title: string, content: string, sourceLan
       // Translate title
       const translatedTitle = await translateWithAI(title, lang, sourceLanguage);
       
-      // Small delay between title and content translation
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      // Longer delay between title and content translation to avoid rate limits
+      await new Promise(resolve => setTimeout(resolve, 5000));
       
       // Translate content (split into chunks if too long)
       const translatedContent = await translateWithAI(content, lang, sourceLanguage);
@@ -117,8 +117,8 @@ export async function translateKhutbah(title: string, content: string, sourceLan
         content: translatedContent
       };
       
-      // Add longer delay to avoid rate limiting (8 seconds between translations)
-      await new Promise(resolve => setTimeout(resolve, 8000));
+      // Add significant delay to avoid rate limiting (15 seconds between translations)
+      await new Promise(resolve => setTimeout(resolve, 15000));
       
     } catch (error) {
       console.error(`Failed to translate to ${lang}:`, error);
@@ -254,8 +254,9 @@ export async function createLecture(lectureData: {
       console.log("Generating AI translations for khutbah...");
       
       try {
-        // Try with all languages first
-        const aiTranslations = await translateKhutbah(lectureData.title, lectureData.content);
+        // Start with essential languages only to reduce rate limiting risk
+        console.log("Starting with essential languages to minimize rate limiting...");
+        const aiTranslations = await translateKhutbah(lectureData.title, lectureData.content, 'en', true);
         
         // Build title translations
         Object.keys(aiTranslations).forEach(lang => {
@@ -265,25 +266,45 @@ export async function createLecture(lectureData: {
         // Build content translations map
         translationMap = aiTranslations;
         
-      } catch (error) {
-        console.warn("Failed with all languages, falling back to essential languages only:", error);
-        
+        // If essential languages succeeded, try to add remaining languages
         try {
-          // Fallback: Use essential languages only to reduce API calls
-          const aiTranslations = await translateKhutbah(lectureData.title, lectureData.content, 'en', true);
+          console.log("Essential languages successful, attempting remaining languages...");
+          const remainingLanguages = Object.keys(SUPPORTED_LANGUAGES).filter(lang => 
+            lang !== 'en' && !Object.keys(ESSENTIAL_LANGUAGES).includes(lang)
+          );
           
-          // Build title translations
-          Object.keys(aiTranslations).forEach(lang => {
-            titleTranslations[lang as keyof typeof titleTranslations] = aiTranslations[lang].title;
-          });
+          // Add longer delay before attempting remaining languages
+          await new Promise(resolve => setTimeout(resolve, 20000));
           
-          // Build content translations map
-          translationMap = aiTranslations;
+          for (const lang of remainingLanguages) {
+            try {
+              console.log(`Attempting ${SUPPORTED_LANGUAGES[lang as keyof typeof SUPPORTED_LANGUAGES]}...`);
+              
+              const titleTranslation = await translateWithAI(lectureData.title, lang, 'en');
+              const contentTranslation = await translateWithAI(lectureData.content, lang, 'en');
+              
+              titleTranslations[lang as keyof typeof titleTranslations] = titleTranslation;
+              translationMap[lang] = {
+                title: titleTranslation,
+                content: contentTranslation
+              };
+              
+              // Longer delay between remaining languages
+              await new Promise(resolve => setTimeout(resolve, 25000));
+              
+            } catch (langError) {
+              console.warn(`Failed to translate to ${lang}, skipping:`, langError);
+              // Continue with other languages
+            }
+          }
           
-        } catch (fallbackError) {
-          console.error("Translation failed even with essential languages:", fallbackError);
-          // Continue without translations
+        } catch (remainingError) {
+          console.warn("Failed to add remaining languages, continuing with essential only:", remainingError);
         }
+        
+      } catch (error) {
+        console.error("Translation failed completely:", error);
+        // Continue without translations
       }
     }
 
